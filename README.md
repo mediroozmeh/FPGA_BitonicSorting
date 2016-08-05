@@ -5,6 +5,8 @@ In this experiment Opencl description of bitonic sorting algorithm is used as a 
 
 ### Overview on Bitonic Sorting algorithm:
 
+Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular.
+
 
 
 
