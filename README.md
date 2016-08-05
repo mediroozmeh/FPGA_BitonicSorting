@@ -1,3 +1,6 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+
 # Bitonic Sorting
 ####Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
 
