@@ -3,7 +3,8 @@
 
 In this experiment Opencl description of bitonic sorting algorithm is used as a source code to be digested by SDAccel which targets xilinx FPGAs. However, same Opencl code is run on GPU for compariosn purpose but the main goal of this experiment is to explore and complete FPGA design flow using SDAccel and its capabilities.
 
-###
+### Overview on Bitonic Sorting algorithm:
+
 
 
 
