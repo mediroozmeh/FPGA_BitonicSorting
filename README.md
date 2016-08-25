@@ -14,7 +14,11 @@ Sorting a list of input numbers is one of the most fundamental problems in the f
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/sorting_network.jpeg)
  
- Efficency of sorting network depends on depth adn the number of comparator, The depth is defined as the maximum number of comparators along any path from input to output.Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time , needed to sort all of N numbers on the inputs and thus defines the commplexity of the sorting network.
+ Efficency of sorting network depends on depth adn the number of comparator, The depth is defined as the maximum number of comparators along any path from input to output.Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time , needed to sort all of N numbers on the inputs and thus defines the commplexity of the sorting network.Bitonic mergesort network is one of the fastet comparison sorting network. 
+ 
+ D(N)= log N.(logN+1)/ 2
+ 
+ C(N)= N.logN.(logN+1)/4
 
 
 
