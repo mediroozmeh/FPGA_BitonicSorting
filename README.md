@@ -1,10 +1,10 @@
-### High Level Synthesis of OpenCL Description of Bitonic Sorting Algorithm:   
+# High Level Synthesis of OpenCL Description of Bitonic Sorting Algorithm:   
 
 ### Source Code:
 
 OpenCl source code of this work is choosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA.      
 
-####Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
+###Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
 
 In this experiment Opencl description of bitonic sorting algorithm is used as a source code to be digested by SDAccel in order to target xilinx FPGAs. However, same OpenCL code is run on GPU for compariosn purpose but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and its capabilities.
 
