@@ -1,4 +1,4 @@
-# High Level Synthesis of OpenCL Description of Bitonic Sorting Algorithm:   
+### High Level Synthesis of OpenCL Description of Bitonic Sorting Algorithm:   
 
 ### Source Code:
 
