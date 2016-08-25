@@ -10,11 +10,13 @@ In this experiment Opencl description of bitonic sorting algorithm is used as a 
 
 ### Brief Analysis of Bitonic Sorting algorithm:
 
-Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular. Among various version of sorting algorithms, bitonic sorting is one of the fastest sorting networks.A sorting network is a special type of sorting algorithm, where the sequence of comparisons are not dada-dependent which makes it suitable for hardware implementation.This sorting network consists of (nlog(n)<sup>2</sup>) comparators , a comparator is a building block of sorting network and it sorts a pair of valus presents on inputs.
+Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular. Among various version of sorting algorithms, bitonic sorting is one of the fastest sorting networks.A sorting network is a special type of sorting algorithm, where the sequence of comparisons are not dada-dependent which makes it suitable for hardware implementation.This sorting network consists of nlog(n)<sup>2</sup> comparators (which n is the number of inputs)  , a comparator is a building block of sorting network and it sorts a pair of valus presents on inputs.
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/sorting_network.jpeg)
  
- 
+ Efficency of sorting network depends on depth adn the number of comparator, The depth is defined as the maximum number of comparators along any path from input to output.Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time , needed to sort all of N numbers on the inputs and thus defines the commplexity of the sorting network.
+
+
 
 
 
