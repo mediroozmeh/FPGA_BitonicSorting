@@ -20,9 +20,11 @@ Sorting a list of input numbers is one of the most fundamental problems in the f
  
  C(N)= N.log<sub>N.(log<sub>N+1)/4
 
+Following figure illustrates a Bitonic Merge sort network with eight inputs(N=8). It operates in 3 stages , it has a depth of 6(steps) and employs 24 comparators.
+
 ![Bitonic](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/Bitonic.jpg)
 
-
+Conqure and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the biotonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the proccess through all stages until the entire sequence is stored. 
 
 
 
