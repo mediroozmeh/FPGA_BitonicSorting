@@ -16,9 +16,9 @@ Sorting a list of input numbers is one of the most fundamental problems in the f
  
  Efficency of sorting network depends on depth adn the number of comparator, The depth is defined as the maximum number of comparators along any path from input to output.Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time , needed to sort all of N numbers on the inputs and thus defines the commplexity of the sorting network.Bitonic mergesort network is one of the fastet comparison sorting network which following formulas drive depth and number of comparators :
  
- D(N)= (log N.(log N+1)) / 2            ---->  Depth of sorting network
+ D(N)= (log N.(log N+1)) / 2          \\\    ---->  Depth of sorting network
  
- C(N)= (N.log N.(logN+1)) / 4           ---->  Number of Comparator
+ C(N)= (N.log N.(logN+1)) / 4          \\\\  ---->  Number of Comparator
 
 Following figure illustrates a Bitonic Merge sort network with eight inputs(N=8). It operates in 3 stages , it has a depth of 6(steps) and employs 24 comparators.
 
