@@ -11,6 +11,9 @@ In this experiment Opencl description of bitonic sorting algorithm is used as a 
 ### Brief Analysis of Bitonic Sorting algorithm:
 
 Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular. Among various version of sorting algorithms, bitonic sorting is one of the fastest sorting networks.A sorting network is a special type of sorting algorithm, where the sequence of comparisons are not dada-dependent which makes it suitable for hardware implementation.This sorting network consists of (nlog(n)<sup>2</sup>) comparators , a comparator is a building block of sorting network and it sorts a pair of valus presents on inputs.
+ ![Join_algo](https://github.com/mediroozmeh/join_algorithm/blob/master/github_figuers/Nested_Loop_Join.jpg)
+
+
 
 
 
