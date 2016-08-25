@@ -20,7 +20,7 @@ Sorting a list of input numbers is one of the most fundamental problems in the f
  
  C(N)= N.log<sub>N.(log<sub>N+1)/4
 
-
+![Bitonic](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/Bitonic.jpeg)
 
 
 
