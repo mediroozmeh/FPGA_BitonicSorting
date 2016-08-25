@@ -1,5 +1,7 @@
-# License status:
-** Describe whre you did find the code and how use it and which changes did you make ****
+### Source Code:
+
+OpenCl source code of this work is choosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA.      
+
 # Overview:
 
 ####Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
