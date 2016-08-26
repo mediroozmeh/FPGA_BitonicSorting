@@ -22,6 +22,12 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
 ###
+
+|                    |                |    
+|--------------------|:-------------: |
+|  Join_function.h   |This header file includes C function which is used for primary synthesis and verification of OpenCL kernel and it is run on CPU                | |
+|  join_algo_local.cl |      Using local meomry and unrolling most inner loop  |
+
 ### Source Code:
 
 OpenCl source code of this work is chosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA. 
