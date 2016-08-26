@@ -21,7 +21,7 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
-###
+### Performance and Power Analysis for GPU and FPGA devices: 
 
 |     Bitonic-Sorting Design               | Execution Time               |    
 |--------------------|:-------------: |
