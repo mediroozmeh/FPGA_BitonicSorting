@@ -23,10 +23,10 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 
 ###
 
-|     Bitonic Sorting Algorithm               |                |    
+|     Bitonic Sorting Algorithm               | Execution Time               |    
 |--------------------|:-------------: |
-|    Unoptimized |                | |
-|  Partial Optimized |        |
+|    Unoptimized |                | 3423 ms|
+|  Partial Optimized |     132412 ms   |
 
 
 
