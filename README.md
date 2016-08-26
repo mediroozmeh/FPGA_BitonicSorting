@@ -1,10 +1,4 @@
-# High Level Synthesis of OpenCL Description of Bitonic Sorting Algorithm:   
-
-### Source Code:
-
-OpenCl source code of this work is chosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA.      
-
-###Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
+#Implementation of Bitonic Sorting algorithm on FPGA through SDAccel using Opencl as source code
 
 In this experiment OpenCL description of bitonic sorting algorithm is used as a source code to be digested by SDAccel targeting xilinx FPGAs. However, same source code is run on GPU as a competitive platform of FPGA but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and explore its capabilities.
 
@@ -28,7 +22,9 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
 ###
+### Source Code:
 
+OpenCl source code of this work is chosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA. 
 
 
 
