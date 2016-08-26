@@ -23,20 +23,14 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 
 ###
 
-|                    |                |    
+|     Bitonic Sorting Algorithm               |                |    
 |--------------------|:-------------: |
-|  Join_function.h   |This header file includes C function which is used for primary synthesis and verification of OpenCL kernel and it is run on CPU                | |
-|  join_algo_local.cl |      Using local meomry and unrolling most inner loop  |
+|    Unoptimized |                | |
+|  Partial Optimized |        |
 
 
 
-|                    |                |    
-|--------------------|:-------------: |
-|  join_algo_hostcode_FPGA.cpp |  Host code is used to perform hardware emulation and run the kernel throgh SDAceel               |
-|  Join_function.h   |This header file includes C function which is used for primary synthesis and verification of OpenCL kernel and it is run on CPU                | |
-|       Param.h                   |   Parameters which are used within .cl and .c files used in this work. I.e. global work size and local work size.                                |
-|  join_algo_local.cl |      Using local meomry and unrolling most inner loop  |
-|  kernel_local.tcl |      tcl script which is used to run join_algo_local.cl |
+
 
 
 ### Source Code:
