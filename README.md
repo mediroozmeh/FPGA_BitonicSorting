@@ -23,10 +23,10 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 
 ### Performance and Power Analysis for GPU and FPGA devices: 
 
-|     Bitonic-Sorting Design               | Execution Time               |    
+|     Bitonic-Sorting Design               | Execution Time ms               |    
 |--------------------|:-------------: |
-|    Unoptimized |          325 ms      | |
-|  Partial Optimized |      261 ms   |
+|    Unoptimized |          325       | |
+|  Partial Optimized |      261    |
 
 
 
