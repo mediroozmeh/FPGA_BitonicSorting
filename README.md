@@ -1,4 +1,4 @@
-##Implementation of Bitonic Sorting Algorithm on FPGA Through SDAccel Using OpenCL as a Source Code
+##Synthesis of Bitonic Sorting Algorithm Targeting FPGA by SDAccel Using OpenCL as a Source Code:
 
 In this experiment OpenCL description of bitonic sorting algorithm is used as a source code to be digested by SDAccel targeting xilinx FPGAs. However, same source code is run on GPU as a competitive platform of FPGA but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and explore its capabilities.
 
