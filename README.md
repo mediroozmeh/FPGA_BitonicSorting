@@ -1,8 +1,8 @@
-## High Level Synthesis of Bitonic Sorting algorithm  :
+## High Level Synthesis of Bitonic Sorting Algorithm  :
 
 In this experiment OpenCL description of bitonic sorting algorithm is used as a source code to be synthesized by SDAccel targeting xilinx FPGAs. However, same source code is run on GPU as a competitive platform of FPGA but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and explore its capabilities.
 
-### Brief Analysis of Bitonic Sorting algorithm:
+### Brief Analysis of Bitonic Sorting Algorithm:
 
 Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular. Among various version of sorting algorithms, bitonic sorting is one of the fastest sorting networks. A sorting network is a special type of sorting algorithm, where the sequence of comparisons are not dada-dependent which makes it suitable for hardware implementation. This sorting network consists of D(N) comparators (which N is the number of inputs)  , a comparator is a building block of sorting network and it sorts a pair of values presents on inputs. 
 
@@ -21,11 +21,11 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
-### Performance and Power Analysis for GPU and FPGA devices: 
+### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. In the rest of the work synthesis results of three different solutions, targeting Xilinx FPGAs, are presented. Furthermore, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA. Finally, total execution time of sorting wide range of keys are plotted in the last graph for all used platforms in order to conclude this work.
 
 
-### First implementaion:
+### First Implementaion:
 
 In the first experiment with SDAccel, Un-optimized source code which is used to be executed on GPU is synthesized, following table presents performance and power analysis for the first case.   
 
