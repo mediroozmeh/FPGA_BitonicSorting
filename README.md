@@ -35,10 +35,10 @@ In the first experiment with SDAccel, Un-optimized source code which is used to 
 |  Total time |          |||
 |  Power(Device) |          |||
 |  Energy(Device) |          |||
-|  LUT Utilization |    275045( 63%)      |||
-|  FF Utilization |      60843(7 %)    |||
-|  DSP Utilization |  16 (0.4 %)       |||
-|  BRAMs Utilization | 506(17 %)          |||
+|  LUT Utilization |    275045( 63%)      |-|-|
+|  FF Utilization |      60843(7 %)    |-|-|
+|  DSP Utilization |  16 (0.4 %)       |-|-|
+|  BRAMs Utilization | 506(17 %)          |-|-|
 
 
 
