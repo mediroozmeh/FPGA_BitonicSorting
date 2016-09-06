@@ -22,25 +22,25 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
 ### Performance and Power Analysis for GPU and FPGA devices: 
-SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. In the rest of the work synthesis results of three different solutions, targeting Xilinx FPGAs, are presented. Furthermore, same OpenCL code is executed on two different GPU devices as a competitor platform to Xilinx virtex7 FPGA. Finally, total execution time of sorting wide range of keys are plotted in the last graph for all used platforms in order to conclude this work.
+SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. In the rest of the work synthesis results of three different solutions, targeting Xilinx FPGAs, are presented. Furthermore, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA. Finally, total execution time of sorting wide range of keys are plotted in the last graph for all used platforms in order to conclude this work.
 
 
-### First implementaion: 
+### First implementaion:
 
-In the first try to  
+In the first experiment with SDAccel, Un-optimized source code which is used to be executed on GPU is synthesized, following table presents performance and power analysis for the first case.   
+
+ 
+| Parametersd/Devices|FPGA               |GTX960|K4200|    
+|--------------------|:-------------: |:-------------: |:-------------: |
+|  Total time |          |||
+|  Power(Device) |          |||
+|  Energy(Device) |          |||
+|  LUT Utilization |          |||
+|  FF Utilization |          |||
+|  DSP Utilization |          |||
+|  BRAMs Utilization |          |||
 
 
-
-
-
-
-
-
-
-|     Bitonic-Sorting Design               | Execution Time ms               |    
-|--------------------|:-------------: |
-|    Unoptimized |          325       | |
-|  Partial Optimized |      261    |
 
 
 
@@ -64,6 +64,19 @@ OpenCl source code of this work is chosen from NVIDIA OpenCl examples repository
 [1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
 
 
+
+
+| Parametersd/Devices|FPGA               |GTX960|K4200|    
+|--------------------|:-------------: |:-------------: |:-------------: |
+|    Device time|              | |||
+|  CPU sortn time |          |||
+|  Total time |          |||
+|  Power(Device) |          |||
+|  Energy(Device) |          |||
+|  LUT Utilization |          |||
+|  FF Utilization |          |||
+|  DSP Utilization |          |||
+|  BRAMs Utilization |          |||
 
 
 
