@@ -43,13 +43,14 @@ In the first experiment with SDAccel, Un-optimized source code which is used to 
 
 
 
+###Second Implementation (Partially Optimized Design):
 
+In the second experiment, using 
 
-
-
+###Third Implementation: 
 ### Source Code:
 
-OpenCl source code of this work is chosen from NVIDIA OpenCl examples repository, modification and optimization are done in order to execute it on GPU and FPGA. 
+OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
 
 
 
