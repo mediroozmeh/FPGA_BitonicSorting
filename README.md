@@ -35,10 +35,10 @@ In the first experiment with SDAccel, Un-optimized source code which is used to 
 |  Total time |          |||
 |  Power(Device) |          |||
 |  Energy(Device) |          |||
-|  LUT Utilization |    21828 ( 5%)      |-|-|
-|  FF Utilization |     14624 (1 %)    |-|-|
+|  LUT Utilization |    4308( ~ 0%)      |-|-|
+|  FF Utilization |     3585 ( ~ 0 %)    |-|-|
 |  DSP Utilization |  0       |-|-|
-|  BRAMs Utilization | 125(4%)          |-|-|
+|  BRAMs Utilization | 13 (~ 0 %)          |-|-|
 
 
 
@@ -66,12 +66,11 @@ In the last try with SDAccel, synthesis of OpenCL algorithm is directed toward h
 |  LUT Utilization |          |-|-|
 |  FF Utilization |        |-|-|
 |  DSP Utilization |         |-|-|
-|  BRAMs Utilization | gvim          |-|-|
+|  BRAMs Utilization |           |-|-|
 
 
 
-### Source Code:
-
+### Source Co
 OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
 
 
