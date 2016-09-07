@@ -35,10 +35,10 @@ In the first experiment with SDAccel, Un-optimized source code which is used to 
 |  Total time |          |||
 |  Power(Device) |          |||
 |  Energy(Device) |          |||
-|  LUT Utilization |    275045( 63%)      |-|-|
-|  FF Utilization |      60843(7 %)    |-|-|
-|  DSP Utilization |  16 (0.4 %)       |-|-|
-|  BRAMs Utilization | 506(17 %)          |-|-|
+|  LUT Utilization |    21828 ( 5%)      |-|-|
+|  FF Utilization |     14624 (1 %)    |-|-|
+|  DSP Utilization |  0       |-|-|
+|  BRAMs Utilization | 125(4%)          |-|-|
 
 
 
@@ -47,7 +47,29 @@ In the first experiment with SDAccel, Un-optimized source code which is used to 
 
 In the second experiment, using 
 
-###Third Implementation: 
+###Fully Optimized Design:
+
+In the last try with SDAccel, synthesis of OpenCL algorithm is directed toward high performance RTL using different techniques.
+
+- [x] Burst Data Transfer 
+- [x] Using Local Memory
+- [x] Unrolling Loop
+- [x] Multiple Compute Unit 
+- [x] Maximizing Memory Ports
+
+
+| Parametersd/Devices|FPGA               |GTX960|K4200|    
+|--------------------|:-------------: |:-------------: |:-------------: |
+|  Total time |          |||
+|  Power(Device) |          |||
+|  Energy(Device) |          |||
+|  LUT Utilization |          |-|-|
+|  FF Utilization |        |-|-|
+|  DSP Utilization |         |-|-|
+|  BRAMs Utilization | gvim          |-|-|
+
+
+
 ### Source Code:
 
 OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
