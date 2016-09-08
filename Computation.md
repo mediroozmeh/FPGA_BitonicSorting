@@ -2,7 +2,7 @@
 
 ![Bitonic](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/latency.jpg)
 
-LATENCY = 512 + 512 + 513 + 66600 + 514 +513
+### LATENCY = [512 + (512 + 513) + 66600 + (514 +513)] * 4 ns = 
 
 
 
