@@ -32,7 +32,15 @@ INFO [Time: 12:17] Hardware Emulation is in progress...
 --  async work group copy is used in two kernel of sorting algorithm and mergeing algorithm.
 --
 
- 
+### REPORT GENERATED AFTER RUNING HARDWARE EMULATION WITH LOCAL_SIZE_LIMIT OF 64, THE TOTAL EMULATION RUN TIME IS INTERsting which is more than a day.
+
+ output: 4096
+TEST PASSED 
+INFO: [SDAccel 60-349] Executing hardware emulation using software accelerators...COMPLETE
+run_emulation: Time (s): cpu = 24:59:09 ; elapsed = 25:00:21 . Memory (MB): peak = 404.742 ; gain = 0.000 ; free physical = 6660 ; free virtual = 43961
+INFO: [SDAccel 60-244] Generating system estimate report...
+INFO: [SDAccel 60-245] Generating system estimate report...COMPLETE
+============================================
  
  
  
