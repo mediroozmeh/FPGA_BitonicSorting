@@ -31,8 +31,11 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 
 | Parametersd/Devices|GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |
-|  Memory Bandwidth (GB/sec)          |||
-|   Graphics Card Power (W)          |||
+|  Memory Bandwidth (GB/sec)          |173|112|
+|   Graphics Card Power (W)          |120|108|
+|   CUDA CORES        |1024|1344|
+
+
 
 
 
