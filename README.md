@@ -35,7 +35,7 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |   Graphics Card Power (W)          |120|108|
 |   CUDA CORES        |1024|1344|
 
-##
+### Legal Status 
 OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
 
 
