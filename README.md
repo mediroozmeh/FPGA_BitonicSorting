@@ -45,8 +45,6 @@ OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository
 
 | Parametersd/Devices|FPGA               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
-|    Device time|              | |||
-|  CPU sortn time |          |||
 |  Total time |          |||
 |  Power(Device) |          |||
 |  Energy(Device) |          |||
