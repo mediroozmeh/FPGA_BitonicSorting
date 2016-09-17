@@ -2,6 +2,9 @@
 
 In this experiment OpenCL description of bitonic sorting algorithm is used as a source code to be synthesized by SDAccel targeting xilinx FPGAs. However, same source code is run on GPU as a competitive platform of FPGA but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and explore its capabilities.
 
+### Legal Status 
+OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
+
 ### Brief Analysis of Bitonic Sorting Algorithm:
 
 Sorting a list of input numbers is one of the most fundamental problems in the field of computer science in general and high-throughput database applications in particular. Among various version of sorting algorithms, bitonic sorting is one of the fastest sorting networks. A sorting network is a special type of sorting algorithm, where the sequence of comparisons are not dada-dependent which makes it suitable for hardware implementation. This sorting network consists of D(N) comparators (which N is the number of inputs)  , a comparator is a building block of sorting network and it sorts a pair of values presents on inputs. 
@@ -35,8 +38,7 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |   Graphics Card Power (W)          |120|108|
 |   CUDA CORES        |1024|1344|
 
-### Legal Status 
-OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
+
 
 
 
