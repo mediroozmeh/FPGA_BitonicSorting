@@ -35,60 +35,8 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |   Graphics Card Power (W)          |120|108|
 |   CUDA CORES        |1024|1344|
 
-
-
-
-
-
-### First Implementaion:
-
-In the first experiment with SDAccel, Un-optimized source code which is used to be executed on GPU is synthesized, following table presents performance and power analysis for the first case.   
-
- 
-| Parametersd/Devices|FPGA               |GTX960|K4200|    
-|--------------------|:-------------: |:-------------: |:-------------: |
-|  Total time |          |||
-|  Power(Device) |          |||
-|  Energy(Device) |          |||
-|  LUT Utilization |    4308( ~ 0%)      |-|-|
-|  FF Utilization |     3585 ( ~ 0 %)    |-|-|
-|  DSP Utilization |  0       |-|-|
-|  BRAMs Utilization | 13 (~ 0 %)          |-|-|
-
-
-
-
-###Second Implementation (Partially Optimized Design):
-
-In the second experiment, using 
-
-###Fully Optimized Design:
-
-In the last try with SDAccel, synthesis of OpenCL algorithm is directed toward high performance RTL using different techniques.
-
-- [x] Burst Data Transfer 
-- [x] Using Local Memory
-- [x] Unrolling Loop
-- [x] Multiple Compute Unit 
-- [x] Maximizing Memory Ports
-
-
-| Parametersd/Devices|FPGA               |GTX960|K4200|    
-|--------------------|:-------------: |:-------------: |:-------------: |
-|  Total time |          |||
-|  Power(Device) |          |||
-|  Energy(Device) |          |||
-|  LUT Utilization |          |-|-|
-|  FF Utilization |        |-|-|
-|  DSP Utilization |         |-|-|
-|  BRAMs Utilization |           |-|-|
-
-
-
-### Source Co
+##
 OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository, modification and optimization are done in order to execute it on GPU and FPGA.
-
-
 
 
 
