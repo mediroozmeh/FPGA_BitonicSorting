@@ -40,15 +40,7 @@ OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository
 
 
 
-### Performance and Power Analysis for GPU and FPGA devices: 
-*** <<  Draw a table and report GPU performance(only unique version) and FPGA performance for three different implementation, UNoptimizaed, partially optimized, fully optimized which also use multiple compute units >>****
-
-***   Draw a Table and Compare the Power Usage of FPGA for GPU and best FPGA design*****
-
-#Refrences
-[1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
-
-
+### Performance and Power Analysis for GPU and FPGA devices
 
 
 | Parametersd/Devices|FPGA               |GTX960|K4200|    
@@ -62,6 +54,14 @@ OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository
 |  FF Utilization |          |||
 |  DSP Utilization |          |||
 |  BRAMs Utilization |          |||
+
+#Refrences
+[1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
+
+
+
+
+
 
 
 
