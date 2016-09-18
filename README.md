@@ -29,7 +29,7 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 
 __sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximizing memory ports and generating multiple compute unit are implemented using this tcl file.
 
-__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm, different version of kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of how they are optimized.
+__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm, different version of kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
 
 __main.cpp and hostcode.cpp__: This two files are writing input into the kernels, before execution on specified platform, and write back output to global memory when execution is complete.
 
