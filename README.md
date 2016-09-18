@@ -32,10 +32,10 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |  Total time (ms) |   8.6     | 13|16|
 |  Power(W) |     24     |120| 108|
 |  Energy(mj) |     206.4     |1560|1728|
-|  LUT Utilization |          |||
-|  FF Utilization |          |||
-|  DSP Utilization |          |||
-|  BRAMs Utilization |          |||
+|  LUT Utilization |  166740   (38 %)       |-|-|
+|  FF Utilization |   137210    (15 %)   |-|-|
+|  DSP Utilization |   160    (4.4 %)   |-|-|
+|  BRAMs Utilization |    1300   (44 %)   |-|-|
 
 
 ### Power and performance specifiaction of used devices:
