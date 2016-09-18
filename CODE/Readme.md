@@ -10,7 +10,12 @@ __main.cpp and hostcode.cpp__: This two files are writing input into the kernels
 __param.h__ :  This header file is shared between different source file which provides easy modification of key parameters.
 
 
+
+
 __Key Parameters in Bitonic Sorting Algorithm__ :
+
+
+
 
 |    Parameter      |  Value      | Description    |   
 |----------|:-------------:|------:|
