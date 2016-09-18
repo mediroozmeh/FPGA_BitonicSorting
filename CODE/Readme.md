@@ -10,6 +10,13 @@ __main.cpp and hostcode.cpp__: This two files are writing input into the kernels
 
 __Key Parameters in Bitonic Sorting Algorithm__ :
 
+|    Parameter      |  Value      | Description    |   
+|----------|:-------------:|------:|
+|  Array Length        |  2 | 1024  |
+|  Local Size         |  2 | 1024  |
+|  Global Size        |  2 | 1024  |
+
+
 
 
 
