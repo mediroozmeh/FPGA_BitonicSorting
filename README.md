@@ -25,9 +25,17 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
-SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. In the rest of the work synthesis results of three different solutions, targeting Xilinx FPGAs, are presented. Furthermore, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA. Finally, total execution time of sorting wide range of keys are plotted in the last graph for all used platforms in order to conclude this work.
+SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes. Follwoing table presents performacne and power analysis using different platforms. 
 
-### GeForce GTX 960 and QUADRO K4200 specifications:
+| Parametersd/Devices|FPGA               |GTX960|K4200|    
+|--------------------|:-------------: |:-------------: |:-------------: |
+|  Total time |          |||
+|  Power(Device) |          |||
+|  Energy(Device) |          |||
+|  LUT Utilization |          |||
+|  FF Utilization |          |||
+|  DSP Utilization |          |||
+|  BRAMs Utilization |          |||
 
 
 
@@ -39,21 +47,6 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |   CUDA CORES        |1024|1344|
 
 
-
-
-
-### Performance and Power Analysis for GPU and FPGA devices
-
-
-| Parametersd/Devices|FPGA               |GTX960|K4200|    
-|--------------------|:-------------: |:-------------: |:-------------: |
-|  Total time |          |||
-|  Power(Device) |          |||
-|  Energy(Device) |          |||
-|  LUT Utilization |          |||
-|  FF Utilization |          |||
-|  DSP Utilization |          |||
-|  BRAMs Utilization |          |||
 
 #Refrences
 [1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
