@@ -28,6 +28,10 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 
 
 
+
+Follwing graph illustrates total numebr of trasnfer in two different scenario, one is default code whitout any optimization and the second one is using burst which isolate read and write opertstion from DDR from computation part. 
+
+
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
 
