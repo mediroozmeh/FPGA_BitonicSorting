@@ -7,12 +7,14 @@ __BitonicSort.cl__ : This file includes all four kernels which describe and mode
 
 __main.cpp and hostcode.cpp__: This two files are writing input into the kernels, before execution on specified platform, and write back output to global memory when execution is complete.
 
+__param.h__ :  This header file is shared between different source file which provides easy modification of key parameters.
+
 
 __Key Parameters in Bitonic Sorting Algorithm__ :
 
 |    Parameter      |  Value      | Description    |   
 |----------|:-------------:|------:|
-|  arrayLength        |  LOCAL_SIZE_LIMIT * LOCAL_SIZE_LIMIT | Number of array elments  |
+|  arrayLength        |  LOCAL_SIZE_LIMIT * LOCAL_SIZE_LIMIT | Number of array elements  |
 |  Global Size        |  arrayLength / 2 | Total size of the problem for each kernel  |
 |  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel |
 
