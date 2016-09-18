@@ -29,8 +29,8 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 
 | Parametersd/Devices|FPGA               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
-|  Total time |          |||
-|  Power(Device) |          |||
+|  Total time (us) |   86 000     | 130|160|
+|  Power(Device) |     24     |120| 108|
 |  Energy(Device) |          |||
 |  LUT Utilization |          |||
 |  FF Utilization |          |||
