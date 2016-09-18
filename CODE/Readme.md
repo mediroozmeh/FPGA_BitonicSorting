@@ -28,7 +28,7 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 
 
 
-
+![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpeg)
 
 
 
