@@ -12,9 +12,10 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 
 |    Parameter      |  Value      | Description    |   
 |----------|:-------------:|------:|
-|  Array Length        |  2 | 1024  |
-|  Local Size         |  2 | 1024  |
-|  Global Size        |  2 | 1024  |
+|  arrayLength        |  LOCAL_SIZE_LIMIT * LOCAL_SIZE_LIMIT | Number of elements of array  |
+|  Global Size        |  arrayLength / 2 | Global Size   |
+|  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for all four kernels |
+
 
 
 
