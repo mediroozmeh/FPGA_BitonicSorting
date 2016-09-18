@@ -52,7 +52,7 @@ Following graph illustrates total number of transfer in two different scenario, 
 
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
-SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes. Following table presents performance and power analysis using different platforms.
+SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes targeting FPGAS. Following table presents performance and power analysis using different platforms.
 
 | Parametersd/Devices|FPGA               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
@@ -76,9 +76,11 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 
 
 #Refrences
+[1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
+
 [1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
 
-[2] http://www.xilinx.com/support/documentation/data_sheets/ds180_7Series_Overview.pdf
+[3] http://www.xilinx.com/support/documentation/data_sheets/ds180_7Series_Overview.pdf
 
 
 
