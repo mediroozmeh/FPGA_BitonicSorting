@@ -27,7 +27,7 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. In the rest of the work synthesis results of three different solutions, targeting Xilinx FPGAs, are presented. Furthermore, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA. Finally, total execution time of sorting wide range of keys are plotted in the last graph for all used platforms in order to conclude this work.
 
-### GeForce GTX 960 and QUADROK4200 specifications:
+### GeForce GTX 960 and QUADRO K4200 specifications:
 
 
 
