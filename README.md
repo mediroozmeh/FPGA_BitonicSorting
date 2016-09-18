@@ -25,26 +25,26 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
-SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes. Follwoing table presents performacne and power analysis using different platforms. 
+SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes. Following table presents performance and power analysis using different platforms.
 
 | Parametersd/Devices|FPGA               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
 |  Total time (ms) |   8.6     | 13|16|
 |  Power(Device) |     24     |120| 108|
-|  Energy(Device) |          |||
+|  Energy(Device) |     206.4     |1560|1728|
 |  LUT Utilization |          |||
 |  FF Utilization |          |||
 |  DSP Utilization |          |||
 |  BRAMs Utilization |          |||
 
 
-### Power and performance dpecifiaction of used devices:
+### Power and performance specifiaction of used devices:
 
-| Parametersd/Devices|GTX960|K4200|    
-|--------------------|:-------------: |:-------------: |
-|  Memory Bandwidth (GB/sec)          |173|112|
-|   Graphics Card Power (W)          |120|108|
-|   CUDA CORES        |1024|1344|
+| Parametersd/Devices|GTX960|K4200| Virtex 7 |  
+|--------------------|:-------------: |:-------------: |:-------------: |
+|  Memory Bandwidth (GB/sec)          |173|112| 2|
+|   Graphics Card Power (W)          |120|108|-|
+|   CUDA CORES        |1024|1344| -|
 
 
 
