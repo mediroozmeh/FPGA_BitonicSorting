@@ -22,7 +22,34 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 
 ![sorting_network] (https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/Bitonic.jpg)
 
+
+
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it mergesorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
+### Some useful information to run and synthesize Bitonic Sorting algorithm on FPGAs:
+
+__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximizing memory ports and generating multiple compute unit are implemented using this tcl file.
+
+__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm, different version of kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of how they are optimized.
+
+__main.cpp and hostcode.cpp__: This two files are writing input into the kernels, before execution on specified platform, and write back output to global memory when execution is complete.
+
+__param.h__ :  This header file is shared between different source files which provides easy modification of key parameters.
+
+
+
+__Key Parameters in Bitonic Sorting Algorithm__ :
+
+|    Parameter      |  Value      | Description    |   
+|----------|:-------------:|------:|
+|  arrayLength        |  LOCAL_SIZE_LIMIT * LOCAL_SIZE_LIMIT | Number of array elements  |
+|  Global Size        |  arrayLength / 2 | Total size of the problem for each kernel  |
+|  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel |
+
+
+Following graph illustrates total number of transfer in two different scenario, one is default code without any optimization and the second one is using burst which isolate read and write from computation part of algorithm.
+
+![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
+
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, same OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes. Following table presents performance and power analysis using different platforms.
