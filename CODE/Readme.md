@@ -1,3 +1,9 @@
 
 
-### In this read me file you can information about this work and how code is changed. 
+### Some useful information to run and synthesize Bitonic Sorting algorithm on FPGAs:
+
+sdaccel.tcl : This tcl file is used to run software simulation, hardware emulation and syntheisze the source code. Furthuremore, maximizing memory ports and generating multiple compute unit are implemented using this tcl file.
+
+
+ 
+
