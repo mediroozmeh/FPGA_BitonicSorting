@@ -20,9 +20,7 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 |  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel |
 
 
-Following graph illustrates total number of transfer in two different scenario, one is default code without any optimization and the second one is using burst which isolate read and write from computation part of algorithm.
 
-![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
 
 
