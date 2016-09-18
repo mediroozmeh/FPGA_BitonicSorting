@@ -38,7 +38,7 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |  BRAMs Utilization |          |||
 
 
-
+### Power and performance dpecifiaction of used devices:
 
 | Parametersd/Devices|GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |
