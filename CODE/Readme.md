@@ -7,7 +7,7 @@ __BitonicSort.cl__ : This file includes all four kernels which describe and mode
 
 __main.cpp and hostcode.cpp__: This two files are writing input into the kernels, before execution on specified platform, and write back output to global memory when execution is complete.
 
-__param.h__ :  This header file is shared between different source file which provides easy modification of key parameters.
+__param.h__ :  This header file is shared between different source files which provides easy modification of key parameters.
 
 
 
