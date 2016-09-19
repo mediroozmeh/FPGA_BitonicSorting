@@ -83,7 +83,7 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 #Refrences
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
 
-[1] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
+[2] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
 
 [3] http://www.xilinx.com/support/documentation/data_sheets/ds180_7Series_Overview.pdf
 
