@@ -59,7 +59,7 @@ Following graph illustrates total number of transfer in two different scenario, 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes targeting FPGAS. Following table presents performance and power analysis using different platforms.
 
-| Parameters/Devices|FPGA               |GTX960|K4200|    
+| Parameters/Devices|Virtex7               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
 |  Total time (ms) |   8.6     | 13|16|
 |  Power(W) |     24     |120| 108|
