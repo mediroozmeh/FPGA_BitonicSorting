@@ -27,7 +27,7 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it merge sorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
 ### Some useful information to run and synthesize sorting algorithm:
 
-__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximizing memory ports and generating multiple compute unit are implemented using this tcl file.
+__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximizing memory ports and multiple compute unit are implemented using this tcl file.
 
 __BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm, different version of kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
 
