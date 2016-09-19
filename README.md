@@ -50,6 +50,10 @@ Following graph illustrates total number of transfer in two different scenario, 
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
+|    Device     | Kernel Name        | Number of Transfer    |Transfer Rate(MB/s)|Average Bandwidth Utilization(%)|   
+|----------|:-------------:|------:|------:|------:|
+|  Virtex7        | ALL  | 516096  |190.86|1.988|
+
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enable users to generate multiple RTL solutions from same source code which their functionality can be verified with provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to Xilinx virtex7 FPGA but OpenCL code is optimized by using SDAccel features and attributes targeting FPGAS. Following table presents performance and power analysis using different platforms.
