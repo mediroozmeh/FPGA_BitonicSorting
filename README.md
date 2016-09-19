@@ -24,10 +24,11 @@ Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8
 
 
 
-Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it merge sorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored.   
+Conquer and divide is the principle of merge sort algorithm, first it divides the input into the pairs and sort each pair into the bitonic sequence, then it merge sorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored. 
+
 ### Some useful information to run and synthesize sorting algorithm:
 
-__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximizing memory ports and multiple compute unit are implemented using this tcl file.
+__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, maximum memory ports and multiple compute unit are added to design using this tcl file.
 
 __BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm, different version of kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
 
@@ -50,7 +51,7 @@ Following graph illustrates total number of transfer in two different scenario, 
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
-|    Device     | Kernel Name        | Number of Transfer    |Transfer Rate(MB/s)|Average Bandwidth Utilization(%)|   
+|    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
 |----------|:-------------:|------:|------:|------:|
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
 
@@ -69,7 +70,7 @@ SDAccel enable users to generate multiple RTL solutions from same source code wh
 |  BRAMs Utilization |    1300   (44 %)   |-|-|
 
 
-### Power and performance specifiaction of used devices:
+### Power and performance specification of GPUs and FPGA:
 
 | Parameters/Devices|GTX960|K4200| Virtex 7 |  
 |--------------------|:-------------: |:-------------: |:-------------: |
