@@ -51,6 +51,8 @@ Following graph illustrates total number of transfers in two different scenario.
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
+### Memory access and bandwidth utilization for single compute unit:
+
 |    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
 |----------|:-------------:|------:|------:|------:|
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
