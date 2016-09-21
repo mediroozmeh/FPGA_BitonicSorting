@@ -61,6 +61,20 @@ For better performance and memory access analysis SDAccel provides users with ha
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
 
 
+An SDAccel device contains a customization area called the OpenCL region (OCL Region).
+Although not defined in the OpenCL standard, the OCL Region is an important concept in
+SDAccel. The compute units generated from user kernel functions are placed in this region.
+These compute units are highly specialized to execute a single kernel function and
+internally contain parallel execution resources to exploit work-group level parallelism. By
+placing multiple compute units of the same type in the OCL Region, developers can easily
+scale the performance of single kernels across larger NDRange sizes. By placing multiple
+compute units of different types in the OCL Region, developers can leverage task
+parallelism between disparate kernels. In this way, the massive amounts of parallelism
+available in the FPGA device can be customized and harnessed by the SDAccel developer.
+This is different from CPU and GPU implementations of OpenCL which contain a fixed set of
+general purpose resources.
+
+
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enables users to generate multiple RTL solutions from same source code whose functionality can be verified with the provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to virtex7 but OpenCL code is optimized by using SDAccel features and attributes targeting FPGA. Following table presents performance and power analysis using different platforms.
 
