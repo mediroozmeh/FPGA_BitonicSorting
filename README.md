@@ -53,6 +53,9 @@ Following graph illustrates total number of transfers in two different scenario.
 
 ### Memory access and bandwidth utilization for single compute unit:
 
+For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for single compute unit. 
+
+
 |    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
 |----------|:-------------:|------:|------:|------:|
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
