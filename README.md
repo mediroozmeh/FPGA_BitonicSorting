@@ -76,6 +76,8 @@ general purpose resources__ [1].
 
 In this work possible transfer data rate for each compute unit is less than 200 Mb/s which utilizes around 10 percent of available bandwidth on virtex7 fabric. Multiple compute units which are running concurrently allows to improve bandwidth utilization and total performance by factor of 10. Next section of this report presents analysis of different key parameters of algorithm implementation on FPGA.     
 
+![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/multiple.jpeg)
+
 
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
