@@ -18,7 +18,8 @@ command is only valid for kernels that have been placed into binaries that will 
 in the FPGA logic. There is no effect on kernels executing in a processor__.
 
 |        |      Single Memory Ports   | Maximum Memory Port    |    
-|----------|:-------------:|------:|
-|  Transfer Rate  (MB/s)      | 9.12  | 139.8  |
-|  Average Bandwidth Utilization (%)        | .1  | 1.45 |
+|----------|:-------------:|------:|------:|
+|  Transfer Rate  (MB/s)      | 9.12  | 139.8  |9.5 |
+|  Average Bandwidth Utilization (%)        | .1  | 9.5  | 
+|  Total Available Bandwidth  (GB/s)      | .1  | 9.5  | 
 
