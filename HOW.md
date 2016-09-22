@@ -19,5 +19,6 @@ in the FPGA logic. There is no effect on kernels executing in a processor__.
 
 |        |      Single Memory Ports   | Maximum Memory Port    |    
 |----------|:-------------:|------:|
-|  Total BandWidth        | 1  |  1 |
+|  Transfer Rate        |   |   |
+|  Total BandWidth        |   |   |
 
