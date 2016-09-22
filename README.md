@@ -78,6 +78,9 @@ In this work possible transfer data rate for each compute unit is less than 200 
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/multiple.jpeg)
 
+The performance of the AXI4-Stream Interconnect core is limited only by the FPGA logic
+speed. The core utilizes only block RAMs, LUTs, and registers and contains no I/O elements [4]. 
+
 
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
