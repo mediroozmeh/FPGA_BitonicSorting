@@ -98,7 +98,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 | Parameters/Devices|GTX960|K4200| Virtex 7 |  
 |--------------------|:-------------: |:-------------: |:-------------: |
-| Memory Bandwidth (GB/sec)          |173|112| 2|
+| Memory Bandwidth (GB/sec)          |173|112| 9.5|
 |   Graphics Card Power (W)          |120|108|-|
 |   CUDA CORES        |1024|1344| -|
 
