@@ -17,8 +17,8 @@ interface for every global memory buffer declared in the kernel function signatu
 command is only valid for kernels that have been placed into binaries that will be executed 
 in the FPGA logic. There is no effect on kernels executing in a processor__.
 
-|        |      Single Memory Ports   | Maximum Memory Port    |    
+|        |      Single Memory Ports   | Maximum Memory Port    |Number of Memory Blocks|    
 |----------|:-------------:|------:|
-|  Transfer Rate  (MB/s)      | 9.12  | 139.8  |
-|  Average Bandwidth Utilization (%)        |  1.45 | .1  |
+|  Transfer Rate  (MB/s)      | 9.12  | 139.8  ||
+|  Average Bandwidth Utilization (%)        |  1.45 | .1  ||
 
