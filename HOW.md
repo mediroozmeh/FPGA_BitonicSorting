@@ -23,13 +23,17 @@ in the FPGA logic. There is no effect on kernels executing in a processor.
 | ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
 |  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  | 
 
-### Memory Bandwidth of Virtex7 FPGAs:
+### Memory Bandwidth of Virtex7 FPGAs Based on Datasheet:
 
- High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) .  
+ High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) .   
  
 
-|        |      Single Memory Ports   | Maximum Memory Port    |    
+|        |    Usert Guide Example     | Our Case Study     |    
 |----------|:-------------:|------:|
 |  Transfer Rate  (MB/s)      | 176  | 191 |   
 | ~ Average Bandwidth Utilization (%)        | 75 %  | 81 %  | 
 |  Total Available Bandwidth  (MB/s)      | 233   | 233   | 
+
+
+
+
