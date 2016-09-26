@@ -116,6 +116,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 [4] http://www.xilinx.com/support/documentation/ip_documentation/axis_interconnect/v1_1/pg035_axis_interconnect.pdf
 
+[5] https://www.micron.com/products/datasheets/f3a0d8c5-ce92-4641-b59a-6c0fb1826645
 
 
 
