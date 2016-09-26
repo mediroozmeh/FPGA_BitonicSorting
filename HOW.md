@@ -1,4 +1,16 @@
-### UG 1023 page 52 :
+### Memory Bandwidth of Virtex7 FPGAs Based on Datasheet:
+
+ Viretex7 devices offers High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) . In fact this number indicates available bandwidth for each memory port which can be shared between multiple IO. 
+ 
+
+|        |    User Guide Example     | Our Case Study     |    
+|----------|:-------------:|------:|
+|  Transfer Rate  (MB/s)      | 176  | 191 |   
+| ~ Average Bandwidth Utilization (%)        | 75 %  | 81 %  | 
+|  Total Available Bandwidth  (MB/s)      | 233   | 233   | 
+
+
+### Increasing Total bandwisth using Multiple memory ports :
 
 The default behavior of SDAccel creates a single physical memory port for the kernel. The single 
 physical port creates a bottleneck that forces sequential accesses to buffers A and B. 
@@ -22,17 +34,6 @@ in the FPGA logic. There is no effect on kernels executing in a processor.
 |  Transfer Rate  (MB/s)      | 9.12  | 139.8  |9.5 |
 | ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
 |  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  | 
-
-### Memory Bandwidth of Virtex7 FPGAs Based on Datasheet:
-
- High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) .   
- 
-
-|        |    Usert Guide Example     | Our Case Study     |    
-|----------|:-------------:|------:|
-|  Transfer Rate  (MB/s)      | 176  | 191 |   
-| ~ Average Bandwidth Utilization (%)        | 75 %  | 81 %  | 
-|  Total Available Bandwidth  (MB/s)      | 233   | 233   | 
 
 
 
