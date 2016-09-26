@@ -10,7 +10,7 @@
 |  Total Available Bandwidth  (MB/s)      | 233   | 233   | 
 
 
-### Improvement of bandwidth using Multiple memory ports:
+### Improvement of Bandwidth Using Multiple Memory Ports:
 
 The default behavior of SDAccel creates a single physical memory port for the kernel. The single 
 physical port creates a bottleneck that forces sequential accesses to buffers A and B. 
