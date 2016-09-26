@@ -1,6 +1,6 @@
 ### Memory Bandwidth of Virtex7 FPGAs Based on Datasheet:
 
- Viretex7 devices offers High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) . In fact this number indicates available bandwidth for each __memory port__ which can be shared between multiple IO. 
+ Viretex7 devices offers High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) . In fact this number indicates available bandwidth for each __memory port__ which can be shared between multiple IO used in a kernel. 
  
 
 |        |    User Guide Example     | Our Case Study     |    
