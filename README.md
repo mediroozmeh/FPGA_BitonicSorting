@@ -118,6 +118,8 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 [5] https://www.micron.com/products/datasheets/f3a0d8c5-ce92-4641-b59a-6c0fb1826645
 
+[6] http://www.xilinx.com/support/documentation/white_papers/wp375_HPC_Using_FPGAs.pdf
+
 
 
 
