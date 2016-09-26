@@ -36,9 +36,9 @@ in the FPGA logic. There is no effect on kernels executing in a processor.
 |  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  |
 |  Blocak of RAM      | 4 | 120  |
 
-Generating multiple memory ports using on chip memory helps better paralelization and improvement in total bandwidth. In fact by creating unique memory port for each IO we provide separate data-path for accessing off chip memory with less conflicts.  
+Generating multiple memory ports using on chip memory gives the possibility of better parallelization and improvement of total bandwidth. In fact by creating unique memory port for each IO we provide separate data-path for accessing off chip memory with minimum conflicts.  
 
-Creating multiple memory ports is achieveable using off-chip memory which helps to imrove total performance by isolation data access from eqach other.
+
 
 
 
