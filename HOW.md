@@ -30,6 +30,6 @@ in the FPGA logic. There is no effect on kernels executing in a processor.
 
 |        |      Single Memory Ports   | Maximum Memory Port    |    
 |----------|:-------------:|------:|
-|  Transfer Rate  (MB/s)      | 9.12  | 139.8  
-| ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
-|  Total Available Bandwidth  (MB/s)      | 235   | 235   | 
+|  Transfer Rate  (MB/s)      | 176  | 191 |   
+| ~ Average Bandwidth Utilization (%)        | 75 %  | 81 %  | 
+|  Total Available Bandwidth  (MB/s)      | 233   | 233   | 
