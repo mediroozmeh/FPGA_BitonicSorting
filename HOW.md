@@ -38,6 +38,9 @@ in the FPGA logic. There is no effect on kernels executing in a processor.
 
 Generating multiple memory ports using on chip memory gives the possibility of better parallelization and improvement of total bandwidth. In fact by creating unique memory port for each IO we provide separate data-path for accessing off chip memory with minimum conflicts.  
 
+### Time Complexity of Bitonic Sorting Algorithm :
+
+
 
 
 
