@@ -20,7 +20,7 @@ In the simple sorting network with five comparator and four inputs each comparat
  D(N)= (log<sub>2</sub> N.(log<sub>2</sub> N+1)) / 2              ---->  Depth of sorting network
  
 
- C(N)= (N.log<sub>2</sub> (log<sub>2</sub>N+1)) / 4            ---->  Number of Comparator
+ C(N)= (N.log N <sub>2</sub> (log<sub>2</sub>N+1)) / 4            ---->  Number of Comparator
 
 Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8). It operates in 3 stages, it has a depth of 6(steps) and employs 24 comparators.
 
