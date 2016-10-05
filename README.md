@@ -76,7 +76,7 @@ general purpose resources__ [1].
 
 In this work possible transfer data rate for each compute unit is less than 200 Mb/s which utilizes around 2 percent of available bandwidth on virtex7 fabric. Multiple compute units which are running concurrently allows to improve bandwidth utilization and total performance by factor of 10. Next section of this report presents analysis of different key parameters of algorithm implementation on FPGA.     
 
-![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/multiple.jpeg)
+![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
 The performance of the AXI4-Stream Interconnect core is limited only by the FPGA logic
 speed. The core utilizes only block RAMs, LUTs, and registers and contains no I/O elements [4]. 
