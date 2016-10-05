@@ -20,7 +20,7 @@ Sorting a list of input numbers is one of the most fundamental problems in the f
 
 Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8). It operates in 3 stages, it has a depth of 6(steps) and employs 24 comparators.
 
-![sorting_network] (https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/Bitonic.jpg)
+![sorting_network] (https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGNETWOR.jpg)
 
 
 
