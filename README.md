@@ -10,7 +10,11 @@ OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository
 In the field of computer science and high performance data center application sorting a set of inputs is fundamental. Among various possible version of sorting solutions, bitonic algorithm is one of the fastest sorting networks. In general sorting network is type of algorithm where the sequence of comparisons are not data-dependent thus making it suitable for hardware implementation. This sorting network consists of D(N) comparators (where N is the number of elements). A comparator is the basic block of sorting network and it sorts a pair of values presents on inputs.         
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGCOMPARATOR.jpg )
- 
+
+
+In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comprador in the left hand side and other two in the middle can work in parallel within three steps. 
+
+
  Efficiency of sorting network depends on the depth and the number of comparators. The depth is defined as the maximum number of comparators along any path from input to output. Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time needed to sort all of N numbers on the inputs and thus defines the complexity of the sorting network. Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
  
  D(N)= (log<sub>2</sub> N.(log<sub>2</sub> N+1)) / 2              ---->  Depth of sorting network
