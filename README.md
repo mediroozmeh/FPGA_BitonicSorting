@@ -15,7 +15,7 @@ In the field of computer science and high performance data center application so
 In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comprador in the left hand side and other two in the middle can work in parallel within three steps. 
 
 
- Efficiency of sorting network depends on the depth and the number of comparators. The depth is defined as the maximum number of comparators along any path from input to output. Assuming that all comparisons on each level of the network are done in parallel, the depth of the network defines the number of steps, and with that also the sorting time needed to sort all of N numbers on the inputs and thus defines the complexity of the sorting network. Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
+ Depth and number of comparator is key parameter to evaluate performance of sorting network. Maximum number of comparator along any path is the depth of sorting network. Assuming that all comparison on each level is done in parallel the depth of the sorting network is equal to number of stages.Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
  
  D(N)= (log<sub>2</sub> N.(log<sub>2</sub> N+1)) / 2              ---->  Depth of sorting network
  
