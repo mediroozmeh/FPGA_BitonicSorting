@@ -73,7 +73,7 @@ In this experiment maximum transfer data rate from off-chip memory to on-chip is
 
 
 
-For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for a single compute unit using asynchronous memory copies between global and local memory which decreases number of transfer by prefetching from global memory.  
+For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for a single compute unit using asynchronous memory copies between global and local memory which decreases number of transfer by prefetching data from global memory.  
 
 
 |    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
