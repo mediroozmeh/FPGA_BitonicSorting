@@ -12,7 +12,7 @@ In the field of computer science and high performance data center application so
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGCOMPARATOR.jpg )
 
 
-In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comprador in the left hand side and other two in the middle can work in parallel within three steps. 
+In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comprator in the left hand side and other two in the middle can work in parallel within three steps. 
 
 
  Depth and number of comparator is key parameter to evaluate performance of sorting network. Maximum number of comparator along any path is the depth of sorting network. Assuming that all comparison on each level is done in parallel the depth of the sorting network is equal to number of stages.Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
@@ -57,12 +57,33 @@ Following graph illustrates total number of transfers in two different scenario.
 
 ### Memory access and bandwidth utilization for single compute unit:
 
-For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for single compute unit. 
+In this experiment maximum transfer data rate from off-chip memory to on-chip is 200 MB/s using unique physical memory ports for each buffer which is a way to increase available bandwidth to kernel. In fact by creating unique memory port for each IO we provide separate data-path for accessing off-chip memory with minimum conflicts. Following table reports improvements in bandwidth utilization by factor of 14 in cost of extra on-chip memory utilization. 
+
+
+
+
+|        |      Single Memory Ports   | Maximum Memory Port    |    
+|----------|:-------------:|------:|
+|  Transfer Rate  (MB/s)      | 9.12  | 139.8  |
+| ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
+|  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  |
+|  Blocak of RAM      | 4 | 120  |
+
+
+
+
+
+For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for a single compute unit using asynchronous memory copies between global and local memory which decreases number of transfer by prefetching from global memory.  
 
 
 |    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
 |----------|:-------------:|------:|------:|------:|
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
+
+Following graph demonstrates performance improvement ratio by using asyncronous_work_group_copy function which is supported by SDAccel. 
+
+
+
 
 
 __An SDAccel device contains a customization area called the OpenCL region (OCL Region).
@@ -78,7 +99,7 @@ available in the FPGA device can be customized and harnessed by the SDAccel deve
 This is different from CPU and GPU implementations of OpenCL which contain a fixed set of
 general purpose resources__ [1]. 
 
-In this work possible transfer data rate for each compute unit is less than 200 Mb/s which utilizes around 2 percent of available bandwidth on virtex7 fabric. Multiple compute units which are running concurrently allows to improve bandwidth utilization and total performance by factor of 10. Next section of this report presents analysis of different key parameters of algorithm implementation on FPGA.     
+  
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
