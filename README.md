@@ -80,7 +80,9 @@ For better performance and memory access analysis SDAccel provides users with ha
 |----------|:-------------:|------:|------:|------:|
 |  Virtex7        | ALL  | 516096  |190.86|1.988|
 
-Following graph demonstrates performance improvement ratio by using asyncronous_work_group_copy function which is supported by SDAccel. 
+Following graph demonstrates performance improvement ratio by using asyncronous_work_group_copy function which is supported by SDAccel.
+
+! [Transfer_rate ](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/transfer_rate.jpg)
 
 
 
