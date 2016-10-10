@@ -126,15 +126,15 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 ### Power and performance specification of GPUs and FPGA:
 
-| Parameters/Devices|Virtex 7|GTX960| K4200|
+| Parameters/Devices| Virtex 7 |GTX960| K4200|
 
 |--------------------|:-------------: |:-------------: |:-------------: |
 
-| Memory Bandwidth (GB/sec)          |173|112|34|
+| Memory Bandwidth (GB/sec)|173|112|34|
 
-|   Graphics Card Power (W)          |-|120|108|
+|Graphics Card Power (W)|-|120|108|
 
-|   CUDA CORES        |-|1024| 1344|
+|CUDA CORES|-|1024| 1344|
 
 
 
