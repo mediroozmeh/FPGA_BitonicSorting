@@ -130,7 +130,6 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 |--------------------|:-------------: |:-------------: |:-------------: |
 | Memory Bandwidth (GB/sec)          |173|112| 34|
-| Memory Bandwidth (GB/sec)          |34|173| 112|
 |   Graphics Card Power (W)          |-|120|108|
 |   CUDA CORES        |-|1024| 1344|
 
