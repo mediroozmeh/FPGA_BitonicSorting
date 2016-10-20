@@ -152,6 +152,8 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 [8] Qi Mu. Liqing Cui. Yufei Son, "The implememntation and optimization of Bitonic sort algorithm based on CUDA"
 https://arxiv.org/pdf/1506.01446v1.pdf
 
+[9] http://www.xilinx.com/support/documentation/white_papers/wp375_HPC_Using_FPGAs.pdf
+
 
 
 
