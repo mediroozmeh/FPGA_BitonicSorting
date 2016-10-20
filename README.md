@@ -134,6 +134,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 ### why FPGAs:
 
+[9]
 The parallelism offered by FPGA architecture can be easily seen in a few examples of
 HPC-relevant parameters:
 
@@ -144,7 +145,7 @@ ALUs are in order of terabytes/sec (TB/s)
 
 • Throughput on floating point operations are in the order of gigaflops/sec
 (GFLOPS)
-
+[9]
 
 #Refrences
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
