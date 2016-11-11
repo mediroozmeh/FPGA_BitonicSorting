@@ -1,6 +1,6 @@
 #******************************************************************************
 # Define the solution for SDAccel
-create_solution -name SORTING_ -dir . -force
+create_solution -name SORTING_multiple_128 -dir . -force
 add_device -vbnv xilinx:adm-pcie-7v3:1ddr:2.1
 
 # Host Compiler Flags
@@ -14,28 +14,28 @@ add_files "hostcode.cpp"
 
 
 # Kernel Definition
-create_kernel  bitonicSortLocal -type clc
-set_property max_memory_ports true [get_kernels bitonicSortLocal]
+#create_kernel  bitonicSortLocal -type clc
+#set_property max_memory_ports true [get_kernels bitonicSortLocal]
 
 create_kernel  bitonicSortLocal1 -type clc
-set_property max_memory_ports true [get_kernels bitonicSortLocal1]
+#set_property max_memory_ports true [get_kernels bitonicSortLocal1]
 
 create_kernel  bitonicMergeGlobal -type clc
 
-set_property max_memory_ports true [get_kernels bitonicMergeGlobal]
+#set_property max_memory_ports true [get_kernels bitonicMergeGlobal]
 
 create_kernel  bitonicMergeLocal -type clc
 
-set_property max_memory_ports true [get_kernels bitonicMergeLocal]
+# set_property max_memory_ports true [get_kernels bitonicMergeLocal]
 
 # Workaround for the bug in kernel_flags, which does not pass the value to 
 # the -D compiler option, only defines the macro as empty.
 exec cpp BitonicSort.cl > BitonicSort.tmp.cl
-add_files -kernel [get_kernels bitonicSortLocal] "BitonicSort.tmp.cl"
+# add_files -kernel [get_kernels bitonicSortLocal] "BitonicSort.tmp.cl"
 add_files -kernel [get_kernels bitonicSortLocal1] "BitonicSort.tmp.cl"
 add_files -kernel [get_kernels bitonicMergeGlobal] "BitonicSort.tmp.cl"
 add_files -kernel [get_kernels bitonicMergeLocal] "BitonicSort.tmp.cl"
-set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicSortLocal]
+# set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicSortLocal]
 set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicSortLocal1]
 set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeGlobal]
 set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeLocal]
@@ -44,31 +44,47 @@ set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeLo
 create_opencl_binary bitonicsort
 set_property region "OCL_REGION_0" [get_opencl_binary bitonicsort]
 ########################
-create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_0
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_0
 
 #create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_1
-
-
-# create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_1
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_1
 
 ############
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_0
 
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_1
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_1
 
 
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_1
+
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_2
 
 ##
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_0
 
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_1
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_1
 
-##
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_2
 
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_3
+
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_4
+
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_5
+
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_6
+
+
+##########################################################3
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_0
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_1
+
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_1
+
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_2
+
+create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_3
+
+#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_4
 
 #/////////////////////////////////////////
 # Compile the design for CPU based emulation<F5>
