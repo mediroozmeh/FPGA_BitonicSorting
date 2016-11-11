@@ -56,16 +56,6 @@ Following graph illustrates total number of transfers in two different scenario.
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
 
-For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for a single compute unit using asynchronous memory copies between global and local memory which decreases number of transfer by prefetching data from global memory.  
-
-
-|    Device     | Kernel Name        | Number of Transfer    |Transfer Rate (MB/s) |Average Bandwidth Utilization(%)|   
-|----------|:-------------:|------:|------:|------:|
-|  Virtex7        | ALL  | 516096  |190.86|1.988|
-
-Following graph demonstrates performance improvement ratio by using asyncronous_work_group_copy function which is supported by SDAccel.
-
-![Transfer_rate](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/transfer_rate.jpg)
 
 SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars-grained level paralelism.        
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
