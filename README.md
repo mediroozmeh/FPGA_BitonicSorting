@@ -67,7 +67,7 @@ Following graph demonstrates performance improvement ratio by using asyncronous_
 
 ![Transfer_rate](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/transfer_rate.jpg)
 
-SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars level paralelism.        
+SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars-grained level paralelism.        
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
