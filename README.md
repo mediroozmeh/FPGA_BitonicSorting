@@ -55,23 +55,6 @@ Following graph illustrates total number of transfers in two different scenario.
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
-### Memory access and bandwidth utilization for single compute unit:
-
-In this experiment maximum transfer data rate from off-chip memory to on-chip is 200 MB/s using unique physical memory ports for each buffer which is a way to increase available bandwidth to kernel. In fact by creating unique memory port for each IO we provide separate data-path for accessing off-chip memory with minimum conflicts. Following table reports improvements in bandwidth utilization by factor of 14 in cost of extra on-chip memory utilization. 
-
-
-
-
-|        |      Single Memory Ports   | Maximum Memory Port    |    
-|----------|:-------------:|------:|
-|  Transfer Rate  (MB/s)      | 9.12  | 139.8  |
-| ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
-|  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  |
-|  Blocak of RAM      | 4 | 120  |
-
-
-
-
 
 For better performance and memory access analysis SDAccel provides users with hardware emulation which consider memory architecture and underlying hardware in more details. Following table presents performance and memory access analysis for a single compute unit using asynchronous memory copies between global and local memory which decreases number of transfer by prefetching data from global memory.  
 
@@ -84,40 +67,17 @@ Following graph demonstrates performance improvement ratio by using asyncronous_
 
 ![Transfer_rate](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/transfer_rate.jpg)
 
-
-
-
-
-__An SDAccel device contains a customization area called the OpenCL region (OCL Region).
-Although not defined in the OpenCL standard, the OCL Region is an important concept in
-SDAccel. The compute units generated from user kernel functions are placed in this region.
-These compute units are highly specialized to execute a single kernel function and
-internally contain parallel execution resources to exploit work-group level parallelism. By
-placing multiple compute units of the same type in the OCL Region, developers can easily
-scale the performance of single kernels across larger NDRange sizes. By placing multiple
-compute units of different types in the OCL Region, developers can leverage task
-parallelism between disparate kernels. In this way, the massive amounts of parallelism
-available in the FPGA device can be customized and harnessed by the SDAccel developer.
-This is different from CPU and GPU implementations of OpenCL which contain a fixed set of
-general purpose resources__ [1]. 
-
-  
-
+SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars level paralelism.        
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
-
-The performance of the AXI4-Stream Interconnect core is limited only by the FPGA logic
-speed. The core utilizes only block RAMs, LUTs, and registers and contains no I/O elements [4]. 
-
-
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enables users to generate multiple RTL solutions from same source code whose functionality can be verified with the provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to virtex7 but OpenCL code is optimized by using SDAccel features and attributes targeting FPGA. Following table presents performance and power analysis using different platforms.
 
 | Parameters/Devices|Virtex7               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
-|  Total time (ms) |   8.6     | 13|16|
-|  Power(W) |     24     |120| 108|
-|  Energy(mj) |     206.4     |1560|1728|
+|  Total time (ms) |   17    | 16 | 25|
+|  Power(W) |     11     |120| 108|
+|  Energy(mj) |  187        |1920|2700|
 |  LUT Utilization |  166740   (38 %)       |-|-|
 |  FF Utilization |   137210    (15 %)   |-|-|
 |  DSP Utilization |   160    (4.4 %)   |-|-|
