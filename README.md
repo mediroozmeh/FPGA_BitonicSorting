@@ -64,7 +64,7 @@ Following graph illustrates total number of transfers in two different scenario.
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
 
 
-
+##### Multiple Compute Unit
 
 
 SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars-grained level paralelism.        
