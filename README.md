@@ -92,19 +92,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |Graphics Card Power (W)| - |  120 |  108 |
 |CUDA CORES |  - |  1024|  1344 |
 
-### why FPGAs:
 
-
-The parallelism offered by FPGA architecture can be easily seen in a few examples of
-HPC-relevant parameters [9]:
-
-• Internal bandwidth to move the operands and results of application-specific
-ALUs are in order of terabytes/sec (TB/s)
-
-• Throughput on integer operations are in the order of Tera-operations/sec (TOPS)
-
-• Throughput on floating point operations are in the order of gigaflops/sec
-(GFLOPS)
 
 
 #Refrences
