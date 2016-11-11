@@ -94,6 +94,9 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |Graphics Card Power (W)| - |  120 |  108 |
 |CUDA CORES |  - |  1024|  1344 |
 
+### Conclusion:
+
+
 
 
 
