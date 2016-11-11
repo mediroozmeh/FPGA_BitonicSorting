@@ -98,8 +98,6 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 
 
-
-
 #Refrences
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
 
