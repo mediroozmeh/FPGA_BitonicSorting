@@ -121,7 +121,7 @@ async_work_group_copy(l_valA , d_SrcVal + get_group_id(0)*LOCAL_SIZE_LIMIT  , LO
         }
     }
 
-// on-chip to off-chip memory copy
+// Write back to global memory
   async_work_group_copy(d_DstKey + get_group_id(0)* LOCAL_SIZE_LIMIT , l_keyA , LOCAL_SIZE_LIMIT  , 0);
   async_work_group_copy(d_DstVal + get_group_id(0)* LOCAL_SIZE_LIMIT , l_valA , LOCAL_SIZE_LIMIT  , 0);
 //
