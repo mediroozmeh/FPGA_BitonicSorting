@@ -53,7 +53,7 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 
 ### Techniques to improve performance:
 
-##### Burst Data Transfer:
+#### Burst Data Transfer:
 
 Off-chip memory access can be a serious bottleneck in datacenter applications, sorting algorithms all are proper examples to study this problems and experiment available techniques to improve overall performance. SDAccel implements built in function in OpenCL programming language which copy global to local memory in burst fashion and improve overall performance by taking advantage of full bit width of DDR.    
 
@@ -61,7 +61,8 @@ Off-chip memory access can be a serious bottleneck in datacenter applications, s
 #### Multiple Compute Unit: 
 
 
-SDAccel enables designers to take advantage of parallel model of OpenCL programming model by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coarse-grained level parallelism.        
+SDAccel enables designers to take advantage of parallel model of OpenCL programming model by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coarse-grained level parallelism.
+
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
@@ -87,6 +88,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |CUDA CORES |  - |  1024|  1344 |
 
 ### Conclusion:
+
 This work presents the results of SDAccel synthesis and hardware emulation which digests OpenCL source code of bitonic sorting algorithm provided by NVIDIA targeting its GPUs and generate high performance RTL which can be used to program Xilinx FPGAs. In this work SDAccel is used to optimize and improve overall performance by using attributes provided by Xilinx which guides synthesis process toward desired RTL.  
 
 #References
