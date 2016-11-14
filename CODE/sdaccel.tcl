@@ -43,12 +43,11 @@ set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeLo
 # Define Binary Containers
 create_opencl_binary bitonicsort
 set_property region "OCL_REGION_0" [get_opencl_binary bitonicsort]
-############
-
+# Creating compute units for first kernl
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_0
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_1
-##
+#Creating compute units for second kernel
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_0
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_1
@@ -56,7 +55,7 @@ create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_2
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_3
-##########################################################3
+## Creating compute units for Third kernel
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_0
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_1
@@ -64,7 +63,7 @@ create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_2
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_3
-//////////////////////////////////////////////////////////////////////////////////
+
 # Compile the design for CPU based emulation<F5>
 compile_emulation -flow cpu -opencl_binary [get_opencl_binary bitonicsort]
 
