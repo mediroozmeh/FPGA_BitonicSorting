@@ -11,22 +11,6 @@
 
 
 #include "param.h"
-//Passed down by clBuildProgram
-//#ifndef LOCAL_SIZE_LIMIT
-//#define LOCAL_SIZE_LIMIT 512
-//#endif
-
-
-
-  global uint l_key_global[DATA_SIZE];
-  global uint l_val_global[DATA_SIZE];
- // global uint l_key_global_one[DATA_SIZE];
- // global uint l_val_global_one[DATA_SIZE];
-
-
-
-
-
 
 inline void ComparatorPrivate(
     uint *keyA,
@@ -60,11 +44,11 @@ inline void ComparatorLocal(
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////
+//
 // Monolithic bitonic sort kernel for short arrays fitting into local memory
-////////////////////////////////////////////////////////////////////////////////
+//
 // Bitonic sort kernel for large arrays (not fitting into local memory)
-////////////////////////////////////////////////////////////////////////////////
+//
 //Bottom-level bitonic sort
 //Almost the same as bitonicSortLocal with the only exception
 //of even / odd subarrays (of LOCAL_SIZE_LIMIT points) being
@@ -77,22 +61,16 @@ void bitonicSortLocal1(
     __global uint *d_SrcVal
 ){
 
-
- 
-      
-
-
     __local uint l_keyA[LOCAL_SIZE_LIMIT ] __attribute__((xcl_array_partition(block , 8 , 1)));
     __local uint l_valA[LOCAL_SIZE_LIMIT ] __attribute__((xcl_array_partition(block , 8 , 1)));
 
 
-
     //Offset to the beginning of subarray and load data
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////// off-chip to on-chip memory copy
 async_work_group_copy(l_keyA , d_SrcKey + get_group_id(0)*LOCAL_SIZE_LIMIT  , LOCAL_SIZE_LIMIT   ,  0) ;
 async_work_group_copy(l_valA , d_SrcVal + get_group_id(0)*LOCAL_SIZE_LIMIT  , LOCAL_SIZE_LIMIT   ,  0) ;
-////////////////////////////////First Compute unit/////////////////////////////////////////////////////////////////////
+//
 
  
     uint comparatorI = get_global_id(0) & ((LOCAL_SIZE_LIMIT / 2) - 1);
@@ -143,11 +121,10 @@ async_work_group_copy(l_valA , d_SrcVal + get_group_id(0)*LOCAL_SIZE_LIMIT  , LO
         }
     }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////
+// on-chip to off-chip memory copy
   async_work_group_copy(d_DstKey + get_group_id(0)* LOCAL_SIZE_LIMIT , l_keyA , LOCAL_SIZE_LIMIT  , 0);
   async_work_group_copy(d_DstVal + get_group_id(0)* LOCAL_SIZE_LIMIT , l_valA , LOCAL_SIZE_LIMIT  , 0);
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+//
      
 }
 
@@ -174,12 +151,12 @@ __kernel void bitonicMergeGlobal(
     //Bitonic merge
     uint dir = sortDir ^ ( (comparatorI & (size / 2)) != 0 );
     uint pos = 2 * global_comparatorI - (global_comparatorI & (stride - 1));
-/////////////////////////////////////////////////////////////////////////////////////
+//
     uint keyA = d_SrcKey[pos +      0];
     uint valA = d_SrcVal[pos +      0];
     uint keyB = d_SrcKey[pos + stride];
     uint valB = d_SrcVal[pos + stride];   
-///////////////////////////////////////////////////////////////////////// 
+// 
       ComparatorPrivate(
         &keyA, &valA,
         &keyB, &valB,
@@ -211,15 +188,15 @@ void bitonicMergeLocal(
 
     
       
-    __local uint l_key[LOCAL_SIZE_LIMIT] __attribute__((xcl_array_partition (block, 8 , 1)));
+    __local uint l_key[LOCAL_SIZE_LIMIT] __attribute__((xcl_array_partition (complete , 1)));
 
-    __local uint l_val[LOCAL_SIZE_LIMIT] __attribute__((xcl_array_partition (block, 8 , 1)));
+    __local uint l_val[LOCAL_SIZE_LIMIT] __attribute__((xcl_array_partition (complete, 1)));
 
 
-
+// on-chip to off-chip memory copy
     async_work_group_copy(l_key , d_SrcKey + get_group_id(0)*LOCAL_SIZE_LIMIT , LOCAL_SIZE_LIMIT  , 0);
     async_work_group_copy(l_val , d_SrcVal + get_group_id(0)*LOCAL_SIZE_LIMIT  , LOCAL_SIZE_LIMIT  ,  0 );
-
+//
     //Bitonic merge
     uint comparatorI = get_global_id(0) & ((arrayLength / 2) - 1);
     uint         dir = sortDir ^ ( (comparatorI & (size / 2)) != 0 );
@@ -240,7 +217,7 @@ void bitonicMergeLocal(
     }
 
     barrier(CLK_LOCAL_MEM_FENCE);
- 
+// write back to off-chip memory 
 async_work_group_copy(d_DstKey + get_group_id(0) * LOCAL_SIZE_LIMIT , l_key , LOCAL_SIZE_LIMIT , 0);
 async_work_group_copy(d_DstVal + get_group_id(0) * LOCAL_SIZE_LIMIT , l_val , LOCAL_SIZE_LIMIT , 0); 
 
