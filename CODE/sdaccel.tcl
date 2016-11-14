@@ -15,18 +15,9 @@ add_files "hostcode.cpp"
 
 # Kernel Definition
 #create_kernel  bitonicSortLocal -type clc
-#set_property max_memory_ports true [get_kernels bitonicSortLocal]
-
 create_kernel  bitonicSortLocal1 -type clc
-#set_property max_memory_ports true [get_kernels bitonicSortLocal1]
-
 create_kernel  bitonicMergeGlobal -type clc
-
-#set_property max_memory_ports true [get_kernels bitonicMergeGlobal]
-
 create_kernel  bitonicMergeLocal -type clc
-
-# set_property max_memory_ports true [get_kernels bitonicMergeLocal]
 
 # Workaround for the bug in kernel_flags, which does not pass the value to 
 # the -D compiler option, only defines the macro as empty.
@@ -83,6 +74,6 @@ report_estimate
 # Compile the application to run on the accelerator card
 #build_system
 
-# Package the application binaries
+#Package the application binaries
 #package_system
 
