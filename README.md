@@ -61,7 +61,7 @@ Off-chip memory access can be a serious bottleneck in datacenter applications, s
 #### Multiple Compute Unit: 
 
 
-SDAccel enables designers to take advantage of parallel model of OpenCL programming model by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coarse-grained level parallelism.
+SDAccel enables designers to take advantage of parallel model of OpenCL programming language by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which results in better performance mainly due to improved overall bandwidth utilization and coarse-grained level parallelism.
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
