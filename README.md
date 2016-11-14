@@ -95,7 +95,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |CUDA CORES |  - |  1024|  1344 |
 
 ### Conclusion:
-This work presents the result of SDAccel synthesis and hardware emulation which synthesize OpenCL source code of bitonic sorting provided by NVIDIA targeting its GPUs.In this work SDAccel is used to optimize and improve overall performance by using attributes provided by SDAccel which direct synthesis process toward desired RTL. \textbf{asdas}
+This work presents the result of SDAccel synthesis and hardware emulation which digest OpenCL source code of bitonic sorting provided by NVIDIA targeting its GPUs and generate high performance RTL which can be used to program Xilinx FPGAs.In this work SDAccel is used to optimize and improve overall performance by using attributes provided by SDAccel which guides synthesis process toward desired RTL.  
 
 #References
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
