@@ -65,6 +65,9 @@ SDAccel enables designers to take advantage of parallel model of OpenCL programm
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
+#### Classic High Level Synthesis Techniques: 
+Using classic directives of high level synthesis process is necessary in order to achieve optimized RTL, in this work also unrolling, pipelining and memory partitioning techniques are used in order to generate optimized RTL from same source code which is used to be executed on GPU.
+
 ### Performance and Power Analysis for GPU and FPGA Devices: 
 SDAccel enables users to generate multiple RTL solutions from same source code whose functionality can be verified with the provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to virtex7 but OpenCL code is optimized by using SDAccel features and attributes targeting FPGA. Following table presents performance and power analysis using different platforms.
 
