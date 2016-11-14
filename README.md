@@ -58,14 +58,6 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 Off-chip memory access can be a serious bottleneck in datacenter applications, sorting algorithms all are proper examples to study this problems and experiment available techniques to improve overall performance. SDAccel implements built in function in OpenCL programming language which copy global to local memory in burst fashion and improve overall performance by taking advantage of full bit width of DDR.    
 
 
-
-Following graph illustrates total number of transfers in two different scenario. One is the default code without any optimization and the second one is using burst data transfer (async_work_group_copy) which isolates the read and write operations from the computation part.
-
-
-
-![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/total_number.jpg)
-
-
 #### Multiple Compute Unit: 
 
 
