@@ -92,7 +92,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 ### Conclusion:
 
-This work presents the results of synthesis and hardware emulation of SDAccel which digests OpenCL source code of bitonic sorting algorithm provided by NVIDIA targeting its GPUs and generate high performance RTL which can be used to program Xilinx FPGAs.In this work SDAccel is used to optimize and improve overall performance by using attributes provided by Xilinx which guides synthesis process toward desired RTL.  
+This work presents the results of synthesis and hardware emulation of SDAccel which digests OpenCL source code of bitonic sorting algorithm provided by NVIDIA targeting its GPUs and generate high performance RTL which can be used to program Xilinx FPGAs. In this work SDAccel is used to optimize and improve overall performance by using attributes provided by Xilinx which guides synthesis process toward desired RTL.  
 
 #References
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
