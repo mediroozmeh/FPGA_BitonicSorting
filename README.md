@@ -12,7 +12,7 @@ In the field of computer science and high performance data center application so
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGCOMPARATOR.jpg )
 
 
-In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comprator in the left hand side and other two in the middle can work in parallel within three steps. 
+In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comparator in the left hand side and other two in the middle can work in parallel within three steps. 
 
 
  Depth and number of comparator is key parameter to evaluate performance of sorting network. Maximum number of comparator along any path is the depth of sorting network. Assuming that all comparison on each level is done in parallel the depth of the sorting network is equal to number of stages.Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
@@ -34,7 +34,7 @@ Conquer and divide is the principle of merge sort algorithm, first it divides th
 
 __sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, SDAccel based optimizaions such as maximum memory ports and multiple compute unit, are added to the design using this tcl file.
 
-__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm. Different versions of the kernels are also available in the same directory(e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
+__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm. Different versions of the kernels are also available in the same directory (e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
 
 __main.cpp and hostcode.cpp__: These two files write inputs into the kernels, before execution on specified platform, and write back the output to the global memory when the execution is complete.
 
@@ -51,15 +51,15 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 |  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel |
 
 
-### Techniqes to improve performance:
+### Techniques to improve performance:
 
 ##### Burst Data Transfer:
 
-Off-chip memory access can be a serious bottlrneck in datacenter applications, sorting algorithms all are proper exampels to study this problems and experiment available techniques to improve overall performance. SDAccel implemnets built in function in OpenCL programming language which copy global to local memory in burst fashion and improve overall performance by taking advantage of full bidwidth of DDR.    
+Off-chip memory access can be a serious bottleneck in datacenter applications, sorting algorithms all are proper examples to study this problems and experiment available techniques to improve overall performance. SDAccel implements built in function in OpenCL programming language which copy global to local memory in burst fashion and improve overall performance by taking advantage of full bit width of DDR.    
 
 
 
-Following graph illustrates total number of transfers in two different scenario. One is the default code without any optimization and the second one is using burst data transfer(async_work_group_copy) which isolates the read and write operations from the computation part.
+Following graph illustrates total number of transfers in two different scenario. One is the default code without any optimization and the second one is using burst data transfer (async_work_group_copy) which isolates the read and write operations from the computation part.
 
 
 
@@ -69,7 +69,7 @@ Following graph illustrates total number of transfers in two different scenario.
 #### Multiple Compute Unit: 
 
 
-SDAccel enables designers to take advantage of parallel model of OpenCL programming model by  instantiating multiple work group of same kernel separately and excexuting them in oparallel. In fact FPGA parallel architecture can be harnest by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coars-grained level paralelism.        
+SDAccel enables designers to take advantage of parallel model of OpenCL programming model by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which result in better performance mainly due to improved overall band width utilization and coarse-grained level parallelism.        
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
@@ -95,10 +95,9 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |CUDA CORES |  - |  1024|  1344 |
 
 ### Conclusion:
+This work presents the result of SDAccel synthesis and hardware emulation which synthesize OpenCL source code of bitonic sorting provided by NVIDIA targeting its GPUs.In this work SDAccel is used to optimize and improve overall performance by using attributes provided by SDAccel which direct synthesis process toward desired RTL.  
 
-
-
-#Refrences
+#References
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
 
 [2] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
@@ -113,7 +112,7 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 
 [7] http://www.xilinx.com/support/documentation/ip_documentation/ug586_7Series_MIS.pdf
 
-[8] Qi Mu. Liqing Cui. Yufei Son, "The implememntation and optimization of Bitonic sort algorithm based on CUDA"
+[8] Qi Mu. Liqing Cui. Yufei Son, "The implementation and optimization of Bitonic sort algorithm based on CUDA"
 https://arxiv.org/pdf/1506.01446v1.pdf
 
 [9] http://www.xilinx.com/support/documentation/white_papers/wp375_HPC_Using_FPGAs.pdf
