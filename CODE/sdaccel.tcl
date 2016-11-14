@@ -43,22 +43,11 @@ set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeLo
 # Define Binary Containers
 create_opencl_binary bitonicsort
 set_property region "OCL_REGION_0" [get_opencl_binary bitonicsort]
-########################
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_0
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_1
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal] -name bitonicSortLocal_1
-
 ############
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_0
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_1
-
-
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicSortLocal1] -name bitonicSortLocal1_2
-
 ##
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_0
 
@@ -67,14 +56,6 @@ create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_2
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_3
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_4
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_5
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeGlobal] -name bitonicMergeGlobal_6
-
-
 ##########################################################3
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_0
 
@@ -83,10 +64,7 @@ create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_2
 
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_3
-
-#create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_4
-
-#/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 # Compile the design for CPU based emulation<F5>
 compile_emulation -flow cpu -opencl_binary [get_opencl_binary bitonicsort]
 
