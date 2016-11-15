@@ -1,50 +1,86 @@
 ## High Level Synthesis of Bitonic Sorting Algorithm:
 
-In this experiment OpenCL description of bitonic sorting algorithm is used as a source code to be synthesized by SDAccel targeting xilinx FPGAs. However, same source code is run on GPU as a competitive platform of FPGA but the main goal of this experiment is to go through and complete FPGA design flow using SDAccel and explore its capabilities.
+This OpenCL model of the bitonic sorting algorithm is specifically optimized to be synthesized by SDAccel targeting Xilinx FPGAs. 
+The original source code had been written by NVidia for its GPUs. Our
+optimizations improved the performance of the original source code, when run on
+an FPGA, by several orders of magnitude.
 
 ### Legal Status 
-OpenCL source code of this work is chosen from NVIDIA OpenCL examples repository. Modification and optimization are done in order to generate high performance RTL.
+The original OpenCL source is distributed with the NVIDIA OpenCL examples
+repository. Extensive modifications and optimizations were performed by Mehdi Roozmeh, of
+Politecnico di Torino, Italy, in order to generate high performance RTL.
 
-### Brief Analysis of Bitonic Sorting Algorithm:
+### Brief Analysis of the Bitonic Sorting Algorithm:
 
-In the field of computer science and high performance data center application sorting a set of inputs is fundamental. Among various possible version of sorting solutions, bitonic algorithm is one of the fastest sorting networks. In general sorting network is type of algorithm where the sequence of comparisons are not data-dependent thus making it suitable for hardware implementation. This sorting network consists of D(N) comparators (where N is the number of elements). A comparator is the basic block of sorting network and it sorts a pair of values presents on inputs.         
+Sorting vectors is a fundamental algorithm used in a variety of
+high-performance data center applications. Among various possible version of
+sorting solutions, the bitonic algorithm is one of the fastest sorting
+networks. In general the term __sorting network__ identifies a sorting
+algorithm where the sequence of comparisons is not data-dependent, thus making
+it suitable for hardware implementation. The bitonic sorting network consists
+of comparators, which are the basic block of any sorting network and sort a pair of values presents on inputs.         
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGCOMPARATOR.jpg )
 
 
-In the simple sorting network with five comparator and four inputs each comparator presents higher values at lower wire and lower value at top wire. Two comparator in the left hand side and other two in the middle can work in parallel within three steps. 
+The figure shows a simple sorting network with five comparator and four inputs.
+Each comparator puts the higher value on the bottom output and the lower value
+on the top output. Two comparators on the left hand side and two in the middle
+can work in parallel, requiring three time steps. 
 
 
- Depth and number of comparator is key parameter to evaluate performance of sorting network. Maximum number of comparator along any path is the depth of sorting network. Assuming that all comparison on each level is done in parallel the depth of the sorting network is equal to number of stages.Bitonic mergesort network is one of the fastest comparison sorting network with the following formulas representing the depth and number of comparators:
+The depth and number of comparators is a key parameter to evaluate the
+performance of a sorting network. The maximum number of comparators along any
+path is the depth of the sorting network. Assuming that all the comparisons at each
+level are done in parallel, the depth of the sorting network is equal to the
+number of stages and thus proportional to the total execution time. The bitonic
+merge sort network is one of the fastest comparison sorting networks, where the following formulas representing the depth and number of comparators:
  
  D(N)= (log<sub>2</sub> N.(log<sub>2</sub> N+1)) / 2              ---->  Depth of sorting network
  
 
  C(N)= (N.log  <sub>2 N</sub> (log<sub>2</sub>N+1)) / 4            ---->  Number of Comparator
 
-Following figure illustrates a Bitonic Merge sort network with eight inputs (N=8). It operates in 3 stages, it has a depth of 6(steps) and employs 24 comparators.
+The following figure illustrates a Bitonic Merge sort network with eight inputs (N=8). It operates in 3 stages, it has a depth of 6 steps and employs 24 comparators.
 
 ![sorting_network] (https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGNETWOR.jpg)
 
 
 
-Conquer and divide is the principle of merge sort algorithm, first it divides the input into pairs and then sort each pair into the bitonic sequence. It then merges sorts the adjacent bitonic sequence and repeat the process through all stages until the entire sequence is stored. 
+Divide and conquer is the principle of the merge sort algorithm. 
+It is based on the notion of__bitonic sequence__, i.e. a sequence of N elements 
+in which the
+first K elements are sorted in ascending order, and the last N-K elements are
+sorted in descending order (i.e. the K-th element acts as a divider between two
+sub-lists, each sorted in a different direction), or some circular shift of
+such an order.
 
-### Some useful information to run and synthesize sorting algorithm:
+Bitonic sort first
+divides the input into pairs and then sorts each pair into a bitonic sequence.
+It then merges (and sorts) two adjacent bitonic sequences, and repeats this process through all stages until the entire sequence is stored. 
 
-__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware emulation and synthesize the source code. Furthermore, SDAccel based optimizaions such as maximum memory ports and multiple compute unit, are added to the design using this tcl file.
+### Some useful information to run and synthesize bitonic sorting:
 
-__BitonicSort.cl__ : This file includes all four kernels which describe and model bitonic-sorting algorithm. Different versions of the kernels are also available in the same directory (e.g. BitonicSort_default.cl ,BitonicSort_fully_optimized.cl) which are different in terms of optimization.
+__sdaccel.tcl__ : This tcl file is used to run software simulation, hardware
+emulation and synthesize the source code. Furthermore, synthesis constraints
+such as the maximum memory ports and the number of compute units for each kernel, are added to the design using this tcl file.
 
-__main.cpp and hostcode.cpp__: These two files write inputs into the kernels, before execution on specified platform, and write back the output to the global memory when the execution is complete.
+__BitonicSort.cl__ : This file includes the three kernels which model bitonic
+sorting. The original code included a fourth kernel, to be used for small input
+arrays. It has not been optimized since it is not significant.
 
-__param.h__ :  This header file is shared between different source files which provides easy modification of key parameters.
+hostcode.cpp__: This file provides inputs to the kernels, executes them in the
+right sequence, and reads back the outputs.  It also checks the correctness of
+the output.
+
+__param.h__ :  This header file is shared between both host and FPGA code, and
+defines some parameters such as the sizes of global and local arrays.
 
 
 
-__Key Parameters in Bitonic Sorting Algorithm__ :
+__Key Parameters of the Bitonic Sorting Algorithm__ :
 
-|    Parameter      |  Value      | Description    |   
+|    Parameter      |  Default Value      | Description    |   
 |----------|:-------------:|------:|
 |  arrayLength        |  LOCAL_SIZE_LIMIT * LOCAL_SIZE_LIMIT | Number of array elements  |
 |  Global Size        |  arrayLength / 2 | Total size of the problem for each kernel  |
@@ -53,23 +89,36 @@ __Key Parameters in Bitonic Sorting Algorithm__ :
 
 ### Techniques to improve performance:
 
-#### Burst Data Transfer:
+#### Burst Data Transfers:
 
-Off-chip memory access can be a serious bottleneck in datacenter applications, sorting algorithms all are proper examples to study this problems and experiment available techniques to improve overall performance. SDAccel implements built in function in OpenCL programming language which copy global to local memory in burst fashion and improve overall performance by taking advantage of full bit width of DDR.    
+Off-chip memory access can be a serious bottleneck in any OpenCl application.
+SDAccel uses the async_work_group_copy OpenCL function to copy global to local
+memory and vice-versa using AXI bursts, thus improving the overall performance
+by taking advantage of the full bit width of the DDR3 interfaces.    
 
 
-#### Multiple Compute Unit: 
+#### Multiple Compute Units: 
 
 
-SDAccel enables designers to take advantage of parallel model of OpenCL programming language by instantiating multiple work group of same kernel separately and executing them in parallel. In fact FPGA parallel architecture can be exploit by mapping multiple workgroup of OpenCL kernel on FPGA in parallel which results in better performance mainly due to improved overall bandwidth utilization and coarse-grained level parallelism.
+SDAccel enables designers to take advantage of the parallel programming model
+of OpenCL by instantiating multiple work groups of same kernel separately and
+executing them in parallel. The FPGA parallel architecture can be exploited by
+this technique, due to improved overall memory bandwidth utilization and better
+coarse-grained level parallelism.
 
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/OCLREGION.jpg)
 
-#### Classic High Level Synthesis Techniques: 
-Using classic directives of high level synthesis process is necessary in order to achieve optimized RTL, in this work also unrolling, pipelining and memory partitioning techniques are used in order to generate optimized RTL from same source code which is used to be executed on GPU.
+#### High-Level Synthesis Techniques: 
+The use of specific high-level synthesis directives is necessary in order to
+achieve optimized RTL. In this OpenCl example we used unrolling, pipelining and
+memory partitioning in order to generate optimized RTL from essentially the
+same source code which is executed on the GPU.
 
 ### Performance and Power Analysis for GPU and FPGA Devices: 
-SDAccel enables users to generate multiple RTL solutions from same source code whose functionality can be verified with the provided host code used for software emulation. However, OpenCL code is executed on two different GPU devices (GeForce GTX 960 and Quadro K4200) as a competitor platform to virtex7 but OpenCL code is optimized by using SDAccel features and attributes targeting FPGA. Following table presents performance and power analysis using different platforms.
+SDAccel enables users to generate multiple RTL solutions from the same source
+code. We also executed the OpenCL code on two different GPU devices (GeForce
+GTX 960 and Quadro K4200). We present performance and energy consumption
+results.
 
 | Parameters/Devices|Virtex7               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
@@ -90,14 +139,10 @@ SDAccel enables users to generate multiple RTL solutions from same source code w
 |Graphics Card Power (W)| - |  120 |  108 |
 |CUDA CORES |  - |  1024|  1344 |
 
-### Conclusion:
-
-This work presents the results of synthesis and hardware emulation of SDAccel which digests OpenCL source code of bitonic sorting algorithm provided by NVIDIA targeting its GPUs and generate high performance RTL which can be used to program Xilinx FPGAs. In this work SDAccel is used to optimize and improve overall performance by using attributes provided by Xilinx which guides synthesis process toward desired RTL.  
-
 #References
 [1] http://www.xilinx.com/support/documentation/sw_manuals/ug1207-sdaccel-performance-optimization.pdf
 
-[2] Vukasin Rankovic, Anton Kos,"Performacne of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
+[2] Vukasin Rankovic, Anton Kos,"Performance of the Bitonic MergeSort Network on Dataflow Computer", Serbia, Belgrade, 2013
 
 [3] http://www.xilinx.com/support/documentation/data_sheets/ds180_7Series_Overview.pdf
 

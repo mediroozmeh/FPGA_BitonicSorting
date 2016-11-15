@@ -1,6 +1,9 @@
-### Memory Bandwidth of Virtex7 FPGAs Based on Datasheet:
+### Memory Bandwidth of Virtex7 FPGAs Based on Data sheet:
 
- Viretex7 devices offers High-performance SelectIO™ technology with support for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s) . In fact this number indicates available bandwidth for each __memory port__ which can be shared between multiple IO used in a kernel. 
+Virtex7 devices offer High-performance SelectIO technology with support
+for DDR3 interfaces up to 1,866 Mb/s ( 233.25 MB/s). This number indicates the
+available bandwidth for each __memory port__ which can be shared between
+multiple global arrays in a kernel. 
  
 
 |        |    User Guide Example     | Our Case Study     |    
@@ -19,7 +22,7 @@ the console.
 
 One way of increasing the memory bandwidth available to a kernel is to increase the 
 number of physical connections to memory that are attached to a kernel. Proper 
-implementation of this optimization requires your knowledge of both the application and 
+implementation of this optimization requires knowledge of both the application and 
 the target compute device. Therefore, SDAccel requires direct user intervention to increase 
 the number of physical memory ports in a kernel. The SDAccel command to increase the 
 number of physical memory ports available to the kernel is:
@@ -27,21 +30,16 @@ Set_property max_memory_ports true [get_kernels <kernel name>]
 The max_memory_ports property tells SDAccel to generate one physical memory 
 interface for every global memory buffer declared in the kernel function signature. This 
 command is only valid for kernels that have been placed into binaries that will be executed 
-in the FPGA logic. There is no effect on kernels executing in a processor.
+in the FPGA logic. There is no effect on kernels executing on the processor.
 
 |        |      Single Memory Ports   | Maximum Memory Port    |    
 |----------|:-------------:|------:|
 |  Transfer Rate  (MB/s)      | 9.12  | 139.8  |
 | ~ Average Bandwidth Utilization (%)        | .1  | 1.45  | 
 |  Total Available Bandwidth  (GB/s)      | 9.5  | 9.5  |
-|  Blocak of RAM      | 4 | 120  |
+|  Block of RAM      | 4 | 120  |
 
-Generating multiple memory ports using on chip memory gives the possibility of better parallelization and improvement of total bandwidth. In fact by creating unique memory port for each IO we provide separate data-path for accessing off chip memory with minimum conflicts.  
-
-### Time Complexity of Bitonic Sorting Algorithm :
-
-
-
-
-
+Generating multiple memory ports using on chip memory gives the possibility of
+better parallelization and improvement of total bandwidth. In fact by creating
+a unique memory port for each global array we provide a separate data-path for accessing off chip memory with minimum conflicts.  
 

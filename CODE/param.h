@@ -1,8 +1,8 @@
 #define LOCAL_SIZE_LIMIT 512
+#define DATA_SIZE (LOCAL_SIZE_LIMIT*LOCAL_SIZE_LIMIT)
 
-#define DEBUG 1
+// #define DEBUG 1
 
-#define GPU_PROFILING 1
+// #define GPU_PROFILING 1
 
-#define DATA_SIZE 8192
 
