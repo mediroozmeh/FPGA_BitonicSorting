@@ -75,7 +75,6 @@ bitonicSortLocal1(__global uint *d_DstKey, __global uint *d_DstVal, __global uin
 
     // Odd / even arrays of LOCAL_SIZE_LIMIT elements
     // sorted in opposite directions
-    //{
     uint dir = (get_group_id(0) & 1);
 
   __attribute__((xcl_pipeline_loop))
@@ -86,7 +85,6 @@ bitonicSortLocal1(__global uint *d_DstKey, __global uint *d_DstVal, __global uin
 
         ComparatorLocal(&l_keyA[pos], &l_valA[pos], &l_keyA[pos + stride], &l_valA[pos + stride], dir);
     }
-    //}
 
     // Write back to global memor. Vivado HLS automatically performs the 
     // burst only once.
