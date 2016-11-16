@@ -34,7 +34,7 @@ inline void
 ComparatorLocal(__local uint *keyA, __local uint *valA, __local uint *keyB, __local uint *valB, uint arrowDir)
 {
     if ((*keyA > *keyB) == arrowDir) {
-    #pragma HLS 
+    #pragma HLS PIELINE 
         uint t;
         t = *keyA; *keyA = *keyB; *keyB = t;
         t = *valA; *valA = *valB; *valB = t;
@@ -48,9 +48,9 @@ void
 bitonicSortLocal1(__global uint *d_DstKey, __global uint *d_DstVal, __global uint *d_SrcKey, __global uint *d_SrcVal)
 {
 
-  __attribute__((xcl_array_partition(block, 8, 1)))
+  __attribute__((xcl_array_partition(complete, 1)))
     __local uint l_keyA[LOCAL_SIZE_LIMIT ];
-  __attribute__((xcl_array_partition(block, 8, 1)))
+  __attribute__((xcl_array_partition(complete, 1)))
     __local uint l_valA[LOCAL_SIZE_LIMIT ];
 
 
