@@ -86,6 +86,9 @@ __Key Parameters of the Bitonic Sorting Algorithm__ :
 |  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Locl work group size | 
 
 
+ Array size can be set by modifying DATA_SIZE variable and simulation can be run with differnt work group size according to local size variabel. 
+
+
 ### Techniques to improve performance:
 
 #### Burst Data Transfers:
