@@ -82,8 +82,8 @@ __Key Parameters of the Bitonic Sorting Algorithm__ :
 
 |    Parameter      |  Default Value      | Description    |   
 |----------|:-------------:|------:|
-|  arrayLength        |  DATA_SIZE | Number of array elements |
-|  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel 
+|  arrayLength        |  DATA_SIZE | Number of Keys should be sorted |
+|  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Local size of each workgroup for each kernel | 
 
 
 ### Techniques to improve performance:
