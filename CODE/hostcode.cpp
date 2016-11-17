@@ -167,27 +167,8 @@ main(int argc, char** argv)
         local = LOCAL_SIZE_LIMIT / 2;
         printf("STARTING KERNEL SortLocal1\n"); 
         err |= clEnqueueNDRangeKernel(command_queue, sortLocal1Kernel, 1, NULL, (size_t *)&global,(size_t *) &local, 0, NULL, NULL); 
-     
-        check_err(err, "exec"); 
-        printf("FINISHED KERNEL\n");
-        for (unsigned int size = 2 * LOCAL_SIZE_LIMIT; size <= arrayLength; size <<= 1) {
-	  for (unsigned stride = size / 2; stride > 0; stride >>= 1) {
-	      if (stride >= LOCAL_SIZE_LIMIT) {
-		err |= clSetKernelArg(mergeGlobalKernel, 0, sizeof(cl_mem), &dst_key); 
-		err |= clSetKernelArg(mergeGlobalKernel, 1, sizeof(cl_mem), &dst_val); 
-		err |= clSetKernelArg(mergeGlobalKernel, 2, sizeof(cl_mem), &dst_key); 
-		err |= clSetKernelArg(mergeGlobalKernel, 3, sizeof(cl_mem), &dst_val); 
-		err |= clSetKernelArg(mergeGlobalKernel, 4, sizeof(cl_uint), &arrayLength); 
-		err |= clSetKernelArg(mergeGlobalKernel, 5, sizeof(cl_uint), &size); 
-		err |= clSetKernelArg(mergeGlobalKernel, 6, sizeof(cl_uint), &stride); 
-		err |= clSetKernelArg(mergeGlobalKernel, 7, sizeof(cl_uint), &dir); 
-		check_err(err, "arg"); 
-
-		printf("STARTING KERNEL MergeGlobal %u %u\n", size, stride); 
-		err |= clEnqueueNDRangeKernel(command_queue, mergeGlobalKernel, 1, NULL, (size_t *)&global,(size_t *) &local, 0, NULL, NULL); 
-		check_err(err, "exec"); 
-		printf("FINISHED KERNEL\n");
-	      } else {
+	
+         {
 		err |= clSetKernelArg(mergeLocalKernel, 0, sizeof(cl_mem), &dst_key); 
 		err |= clSetKernelArg(mergeLocalKernel, 1, sizeof(cl_mem), &dst_val); 
 		err |= clSetKernelArg(mergeLocalKernel, 2, sizeof(cl_mem), &dst_key); 
