@@ -94,8 +94,8 @@ __Key Parameters of the Bitonic Sorting Algorithm__ :
 
 |    Parameter      |  Default Value      | Description    |   
 |----------|:-------------:|------:|
-|  DATA_SIZE        |  8192 (128) | Total number of keys  |
-|  LOCAL_SIZE_LIMIT |  512 (32) |  Twice the work group size | 
+|  DATA_SIZE        |  4096 (128) | Total number of keys  |
+|  LOCAL_SIZE_LIMIT |  256 (32) |  Twice the work group size | 
 |  DEBUG |  undefined |  If defined, print verbose output | 
 
 
@@ -130,8 +130,8 @@ same source code which is executed on the GPU.
 SDAccel enables users to generate multiple RTL solutions from the same source
 code. We also executed the OpenCL code on two different GPU devices (GeForce
 GTX 960 and Quadro K4200). We present performance and energy consumption
-results. All the data refer to the large data set (8192 elements to be
-sorted and work group size 512).
+results. All the data refer to 4096 elements to be
+sorted and work group size 128 (i.e. LOCAL_SIZE_LIMIT 256).
 
 | Parameters/Devices|Virtex7               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
