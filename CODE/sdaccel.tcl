@@ -2,7 +2,7 @@
 set debug 0
 
 # Define the solution for SDAccel
-create_solution -name SORTING_multiple_128 -dir . -force
+create_solution -name solution -dir . -force
 
 # Define the target platform among the available ones
 add_device -vbnv xilinx:tul-pcie3-ku115:2ddr:3.0
@@ -22,13 +22,6 @@ create_kernel  bitonicSortLocal1 -type clc
 create_kernel  bitonicMergeGlobal -type clc
 create_kernel  bitonicMergeLocal -type clc
 
-# Memory port optimization does NOT work when multiple compute units are
-# instantiated.
-#set_property max_memory_ports true [get_kernels bitonicSortLocal1]
-
-# Workaround for the bug in kernel_flags, which does not pass the value to 
-# the -D compiler option, only defines the macro as empty.
-#exec cpp BitonicSort.cl > BitonicSort.tmp.cl
 add_files -kernel [get_kernels bitonicSortLocal1] "BitonicSort.cl"
 add_files -kernel [get_kernels bitonicMergeGlobal] "BitonicSort.cl"
 add_files -kernel [get_kernels bitonicMergeLocal] "BitonicSort.cl"
