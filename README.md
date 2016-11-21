@@ -6,6 +6,7 @@ optimizations improved the performance of the original source code, when run on
 an FPGA, by several orders of magnitude.
 
 ### Legal Status 
+This software contains source code provided by NVIDIA Corporation.
 The original OpenCL source is distributed with the NVIDIA OpenCL examples
 repository. Extensive modifications and optimizations were performed by Mehdi Roozmeh, of
 Politecnico di Torino, Italy, in order to generate high performance RTL.
@@ -23,7 +24,7 @@ of comparators, which are the basic block of any sorting network and sort a pair
 ![sorting_network](https://github.com/mediroozmeh/Bitonic-Sorting/blob/master/Figures/SORTINGCOMPARATOR.jpg )
 
 
-The figure shows a simple sorting network with five comparator and four inputs.
+The figure shows a simple sorting network with five comparators and four inputs.
 Each comparator puts the higher value on the bottom output and the lower value
 on the top output. Two comparators on the left hand side and two in the middle
 can work in parallel, requiring three time steps. 
@@ -48,7 +49,7 @@ The following figure illustrates a Bitonic Merge sort network with eight inputs 
 
 
 Divide and conquer is the principle of the merge sort algorithm. 
-It is based on the notion of__bitonic sequence__, i.e. a sequence of N elements 
+It is based on the notion of __bitonic sequence__, i.e. a sequence of N elements 
 in which the
 first K elements are sorted in ascending order, and the last N-K elements are
 sorted in descending order (i.e. the K-th element acts as a divider between two
@@ -63,18 +64,29 @@ It then merges (and sorts) two adjacent bitonic sequences, and repeats this proc
 
 __sdaccel.tcl__ : This tcl file is used to run software simulation, hardware
 emulation and synthesize the source code. Furthermore, synthesis constraints
-such as the maximum memory ports and the number of compute units for each kernel, are added to the design using this tcl file.
+such as the maximum memory ports and the number of compute units for
+each kernel, are added to the design using this tcl file. Set to 1 the
+__debug__flag in this file to compile and run the kernels with gdb.
+Please note that this application does not work with SDAccel 2016.2 (it hangs
+when executing the clCreateProgramWithBinary call while performing HW
+emulation).
 
 __BitonicSort.cl__ : This file includes the three kernels which model bitonic
 sorting. The original code included a fourth kernel, to be used for small input
-arrays. It has not been optimized since it is not significant.
+arrays, which has not been optimized since it is not significant for
+performance.
 
-hostcode.cpp__: This file provides inputs to the kernels, executes them in the
+__hostcode.cpp__: This file provides inputs to the kernels, executes them in the
 right sequence, and reads back the outputs.  It also checks the correctness of
 the output.
 
 __param.h__ :  This header file is shared between both host and FPGA code, and
-defines some parameters such as the sizes of global and local arrays.
+defines some parameters such as the sizes of global and local arrays, as
+described below. It
+contains two different parameter sets: one for a small data set, which compiles and
+simulates in under 5 minutes, and one for a large data set, which compiles in 15 minutes, and
+completes RTL simulation in about 4 hours. A larger work group size of course
+achieves better performance at the cost of more FPGA resources.
 
 
 
@@ -82,11 +94,9 @@ __Key Parameters of the Bitonic Sorting Algorithm__ :
 
 |    Parameter      |  Default Value      | Description    |   
 |----------|:-------------:|------:|
-|  arrayLength        |  DATA_SIZE | Total number of keys  |
-|  Local Size         |  LOCAL_SIZE_LIMIT / 2 |  Locl work group size | 
-
-
- Array size can be set by modifying DATA_SIZE variable and simulation can be run with differnt work group size according to local size variabel. 
+|  DATA_SIZE        |  8192 (128) | Total number of keys  |
+|  LOCAL_SIZE_LIMIT |  512 (32) |  Twice the work group size | 
+|  DEBUG |  undefined |  If defined, print verbose output | 
 
 
 ### Techniques to improve performance:
@@ -120,7 +130,8 @@ same source code which is executed on the GPU.
 SDAccel enables users to generate multiple RTL solutions from the same source
 code. We also executed the OpenCL code on two different GPU devices (GeForce
 GTX 960 and Quadro K4200). We present performance and energy consumption
-results.
+results. All the data refer to the large data set (8192 elements to be
+sorted and work group size 512).
 
 | Parameters/Devices|Virtex7               |GTX960|K4200|    
 |--------------------|:-------------: |:-------------: |:-------------: |
