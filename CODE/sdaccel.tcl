@@ -1,18 +1,11 @@
-set version 2016.2
-puts "starting"
-
 # Change to 1 to run SW emulation with gdb
 set debug 0
 
 # Define the solution for SDAccel
 create_solution -name SORTING_multiple_128 -dir . -force
-puts "created"
 
-if {$version == "2016.2"} {
-    add_device -vbnv xilinx:tul-pcie3-ku115:2ddr:3.0
-} else {
-    add_device -vbnv xilinx:adm-pcie-7v3:1ddr:2.1
-}
+# Define the target platform among the available ones
+add_device -vbnv xilinx:tul-pcie3-ku115:2ddr:3.0
 
 # Host Compiler Flags
 if {$debug} {
@@ -24,7 +17,6 @@ if {$debug} {
 # Host Source Files
 add_files "hostcode.cpp"
 
-puts "creating kernel"
 # Kernel Definition
 create_kernel  bitonicSortLocal1 -type clc
 create_kernel  bitonicMergeGlobal -type clc
@@ -46,7 +38,6 @@ if {$debug} {
     set_property -name kernel_flags -value "-g" -objects [get_kernels bitonicMergeLocal]
 }
 
-puts "creating container"
 # Define Binary Containers
 create_opencl_binary bitonicsort
 set_property region "OCL_REGION_0" [get_opencl_binary bitonicsort]
@@ -77,11 +68,9 @@ create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_
 create_compute_unit -opencl_binary [get_opencl_binary bitonicsort] -kernel [get_kernels bitonicMergeLocal] -name bitonicMergeLocal_3
 
 # Compile the design for CPU based emulation
-puts "compiling for SW emulation"
 compile_emulation -flow cpu -opencl_binary [get_opencl_binary bitonicsort]
 
 # Run the compiled application in CPU based emulation mode
-puts "running SW emulation"
 if {$debug} {
     run_emulation -debug -flow cpu -args "bitonicsort.xclbin"
 } else {
@@ -89,11 +78,9 @@ if {$debug} {
 }
 
 # Compile the design for hardware based emulation
-puts "compiling for HW emulation"
 compile_emulation -flow hardware -opencl_binary [get_opencl_binary bitonicsort]
 
 # Run the compiled application in hardware based emulation mode
-puts "running HW emulation"
 run_emulation -flow hardware -args "bitonicsort.xclbin"
 
 # report estimates

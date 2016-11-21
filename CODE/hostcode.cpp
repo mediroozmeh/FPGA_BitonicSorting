@@ -72,7 +72,9 @@ main(int argc, char** argv)
              return 1;
         }
 
+#ifdef DEBUG
         printf("started\n");
+#endif
         for (unsigned int i = 0; i < elements; i++) {
             srckey[i] = (i%2) ? i : elements-i; // rand();
             srcval[i] = i;
@@ -80,7 +82,9 @@ main(int argc, char** argv)
             printf("srckey %d %d\n", srckey[i], srcval[i]);
 #endif
         }
+#ifdef DEBUG
         printf("created input\n");
+#endif
         // retrieve a list of available platforms 
         if (clGetPlatformIDs(1, &platform_id, &num_of_platforms) != CL_SUCCESS) {
              printf("Unable to get platform_id\n");
@@ -92,7 +96,9 @@ main(int argc, char** argv)
             printf("Unable to get device_id\n");
             return 1;
         }
+#ifdef DEBUG
         printf("read platform\n");
+#endif
 
         // context properties list - must be terminated with 0
         properties[0] = CL_CONTEXT_PLATFORM;
@@ -111,7 +117,9 @@ main(int argc, char** argv)
         int status;
         unsigned char *kernelbinary;
         char *xclbin = argv[1];
+#ifdef DEBUG
         printf("loading %s\n", xclbin);
+#endif
         int n_i = load_file_to_memory(xclbin, (char **)&kernelbinary);
         if (n_i < 0) {
             printf("failed to load kernel from xclbin: %s\n", xclbin);
@@ -119,20 +127,24 @@ main(int argc, char** argv)
             return EXIT_FAILURE;
         }
         size_t n = n_i;
-        printf("loaded binary %d\n", n_i);
+        printf("loaded binary %s (%d bytes)\n", xclbin, n_i);
 
         // Create the program off line
         program = clCreateProgramWithBinary(context, 1, &device_id, &n,
                  (const unsigned char **)&kernelbinary, &status, &err);
         check_err(err, "program");
+#ifdef DEBUG
         printf("created program\n");
+#endif
 
         // compile the program
         if (clBuildProgram(program, 0, NULL, NULL, NULL, NULL) != CL_SUCCESS) {
                   printf("Error building program\n");
                   return 1;
         }
+#ifdef DEBUG
         printf("built program\n");
+#endif
 
         // create buffers for the input and ouput
         cl_mem src_key, src_val, dst_key, dst_val;
@@ -142,13 +154,17 @@ main(int argc, char** argv)
         dst_key = clCreateBuffer(context,  CL_MEM_READ_WRITE , sizeof(unsigned int) * elements, NULL, &err);
         dst_val = clCreateBuffer(context,  CL_MEM_READ_WRITE , sizeof(unsigned int) * elements, NULL, &err);
         check_err(err, "buf");
+#ifdef DEBUG
         printf("created buffers\n");
+#endif
 
         // load data into the input buffer
         err |= clEnqueueWriteBuffer(command_queue, src_key, CL_TRUE, 0, sizeof(unsigned int) * elements, srckey, 0, NULL, NULL);
         err |= clEnqueueWriteBuffer(command_queue, src_val, CL_TRUE, 0, sizeof(unsigned int) * elements, srcval, 0, NULL, NULL);
         check_err(err, "write");
+#ifdef DEBUG
         printf("written buffers\n");
+#endif
 
         sortLocal1Kernel = clCreateKernel(program, "bitonicSortLocal1", &err); 
         check_err(err, "bitonicSortLocal1 kernel"); 
@@ -162,12 +178,14 @@ main(int argc, char** argv)
 
         // 0 is descending, 1 is ascending.
         cl_uint dir = 1;
-        cl_uint log2L;
-        if (factorRadix2(log2L, arrayLength) != 1 || factorRadix2(log2L, LOCAL_SIZE_LIMIT) != 1) {
+        cl_uint log2length, log2size;
+        if (factorRadix2(log2length, arrayLength) != 1 || factorRadix2(log2size, LOCAL_SIZE_LIMIT) != 1) {
              printf("only global and local data sizes that are a power of 2 are supported");
              exit(-1);
         }
+#ifdef DEBUG
         printf("created kernels\n");
+#endif
 
         // Arrays are sortedby executing bitonicSortLocal1
         // and then iterating bitonicMergeGlobal bitonicMergeLocal
@@ -179,11 +197,20 @@ main(int argc, char** argv)
   
         global = batch * arrayLength / 2;
         local = LOCAL_SIZE_LIMIT / 2;
-        printf("STARTING KERNEL SortLocal1\n"); 
+        printf("starting kernel SortLocal1 (size %u)\n", DATA_SIZE); 
         err |= clEnqueueNDRangeKernel(command_queue, sortLocal1Kernel, 1, NULL, (size_t *)&global,(size_t *) &local, 0, NULL, NULL); 
 
+	// Precompute total.
+	unsigned int total = 0;
         for (unsigned int size = 2 * LOCAL_SIZE_LIMIT; size <= arrayLength; size <<= 1) {
             for (unsigned stride = size / 2; stride > 0; stride >>= 1) {
+		total++;
+	    }
+	}
+	unsigned int run = 0;
+        for (unsigned int size = 2 * LOCAL_SIZE_LIMIT; size <= arrayLength; size <<= 1) {
+            for (unsigned stride = size / 2; stride > 0; stride >>= 1) {
+		run++;
                 if(stride >= LOCAL_SIZE_LIMIT) {
                     err |= clSetKernelArg(mergeGlobalKernel, 0, sizeof(cl_mem), &dst_key);
                     err |= clSetKernelArg(mergeGlobalKernel, 1, sizeof(cl_mem), &dst_val);
@@ -195,12 +222,11 @@ main(int argc, char** argv)
                     err |= clSetKernelArg(mergeGlobalKernel, 7, sizeof(cl_uint), &dir);
                     check_err(err, "arg");
 
-                    printf("STARTING KERNEL MergeGlobal %u %u\n", size, stride); 
+                    printf("starting kernel MergeGlobal %2d out of %d (size %4u stride %4u)\n", run, total, size, stride); 
 
                     err |= clSetKernelArg(mergeLocalKernel, 0, sizeof(cl_mem), &dst_key); 
                     err |= clEnqueueNDRangeKernel(command_queue, mergeGlobalKernel, 1, NULL, (size_t *)&global,(size_t *) &local, 0, NULL, NULL);
                     check_err(err, "exec");
-                    printf("FINISHED KERNEL\n");
                 } else {
                     err |= clSetKernelArg(mergeLocalKernel, 0, sizeof(cl_mem), &dst_key);
                     err |= clSetKernelArg(mergeLocalKernel, 1, sizeof (cl_mem), &dst_val);
@@ -212,13 +238,17 @@ main(int argc, char** argv)
                     err |= clSetKernelArg(mergeLocalKernel, 7, sizeof(cl_uint), &dir); 
                     check_err(err, "arg"); 
 
-                    printf("STARTING KERNEL MergeLocal %u %u\n", size, stride); 
+                    printf("starting kernel MergeLocal  %2d out of %d (size %4u stride %4u)\n", run, total, size, stride); 
                     err |= clEnqueueNDRangeKernel(command_queue, mergeLocalKernel, 1, NULL, (size_t *)&global,(size_t *) &local, 0, NULL, NULL); 
                     check_err(err, "exec"); 
-                    printf("FINISHED KERNEL\n");
                 }
+		err |= clFinish(command_queue);
+		check_err(err, "finish");
             }
         }
+#ifdef DEBUG
+        printf("finished all kernels\n");
+#endif
 
         err |= clFinish(command_queue);
         check_err(err, "finish");
@@ -227,11 +257,16 @@ main(int argc, char** argv)
         err |= clEnqueueReadBuffer(command_queue, dst_key, CL_TRUE, 0, sizeof(unsigned int) *elements, dstkey, 0, NULL, NULL);
         err |= clEnqueueReadBuffer(command_queue, dst_val, CL_TRUE, 0, sizeof(unsigned int) *elements, dstval, 0, NULL, NULL);
         check_err(err, "read");
+#ifdef DEBUG
+        printf("read data\n");
+#endif
 
         for (int unsigned i = 0 ; i < elements - 1; i++) {
             if ((dir && dstkey[i]>dstkey[i+1]) || (!dir &&
              dstkey[i]<dstkey[i+1])) {
+#ifdef DEBUG
                   printf("ERROR: %d > %d\n", dstkey[i], dstkey[i+1]);
+#endif
                   test_flag = 1;
              }
 #ifdef DEBUG
@@ -243,7 +278,7 @@ main(int argc, char** argv)
 #endif
 
         if (test_flag==1)
-            printf("TEST FAILED \n");
+            printf("TEST FAILED (recompile with -DDEBUG to see more detail)\n");
         else
             printf("TEST PASSED \n");
 
